@@ -59,7 +59,7 @@ export function Sidebar() {
   const isActivePath = (path: string) => (path === '/' ? location.pathname === '/' : location.pathname.startsWith(path))
 
   return (
-    <aside className="flex h-screen w-[248px] shrink-0 flex-col border-r border-slate-200 bg-white px-[18px] py-7">
+    <aside className="sticky top-0 flex h-screen w-[248px] shrink-0 flex-col border-r border-slate-200 bg-white px-[18px] py-7">
       <div className="flex items-center gap-3 px-3">
         <BrandMark size="sm" />
         <span className="text-xl font-semibold tracking-tight text-slate-900">{t('common.appName')}</span>

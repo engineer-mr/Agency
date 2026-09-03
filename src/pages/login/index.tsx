@@ -92,11 +92,15 @@ export function LoginPage() {
         </div>
 
         <label className="flex items-center gap-3 rounded-full border border-[#1849bf] px-4 py-3 text-sm text-slate-700 shadow-sm">
-          <span className="text-slate-400">✉</span>
+          <span className="text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+  <path d="M17.7568 2.60449C18.1307 2.60462 18.4895 2.76147 18.7539 3.04102C19.0183 3.32066 19.167 3.70028 19.167 4.0957V15.2793C19.167 15.6747 19.0182 16.0543 18.7539 16.334C18.4895 16.6135 18.1307 16.7704 17.7568 16.7705H2.24316C1.86929 16.7704 1.51047 16.6135 1.24609 16.334C0.98175 16.0543 0.833008 15.6747 0.833008 15.2793V4.0957C0.833008 3.70027 0.981699 3.32066 1.24609 3.04102C1.51047 2.76146 1.86929 2.60461 2.24316 2.60449H17.7568ZM2.24316 15.2793H17.7568V4.20508L10.9883 10.5449C10.7192 10.7971 10.3663 10.9375 10 10.9375C9.63371 10.9375 9.2808 10.7971 9.01172 10.5449L2.24316 4.2041V15.2793ZM10 9.45898L15.7275 4.0957H4.27246L10 9.45898Z" fill="#68717D"/>
+</svg>
+          </span>
           <Input
             value={email}
             onChange={(event) => setEmail(event.target.value)}
-            className="w-full border-0 bg-transparent p-0 text-sm outline-none placeholder:text-slate-400"
+            className="w-full border-0 bg-transparent p-0 text-[16px] outline-none placeholder:text-slate-400"
             placeholder={t('login.emailPlaceholder')}
             type="email"
           />
@@ -142,7 +146,7 @@ export function VerifyPage() {
       return
     }
 
-    navigate('/', { replace: true })
+    navigate('/home', { replace: true })
   }
 
   return (

@@ -16,7 +16,8 @@ function App() {
   return (
     <I18nProvider>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/workbench" element={<WorkbenchPage />} />
         <Route path="/workbench/poster-skill" element={<PosterSkillPage />} />
         <Route path="/knowledge-base" element={<KnowledgeBasePage />} />
