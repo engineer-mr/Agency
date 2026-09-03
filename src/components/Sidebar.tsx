@@ -45,7 +45,7 @@ function Icon({ name }: { name: 'spark' | 'chart' | 'book' | 'grid' | 'cube' | '
 }
 
 const primaryNav = [
-  { label: 'sidebar.nav.smartAssistant', icon: 'spark', path: '/' },
+  { label: 'sidebar.nav.smartAssistant', icon: 'spark', path: '/home' },
   { label: 'sidebar.nav.workbench', icon: 'chart', path: '/workbench' },
   { label: 'sidebar.nav.knowledgeBase', icon: 'book', path: '/knowledge-base' },
   { label: 'sidebar.nav.project', icon: 'grid', path: '/project' },
@@ -88,16 +88,16 @@ export function Sidebar() {
         {primaryNav.map((item) => (
           <Button
             key={item.label}
-          type="button"
-          onClick={() => {
-            if (item.path) navigate(item.path)
+            type="button"
+            onClick={() => {
+              if (item.path) navigate(item.path)
             }}
             className={`flex h-12 w-full items-center gap-3 rounded-lg px-4 text-sm font-medium transition ${
               item.path && isActivePath(item.path)
                 ? 'bg-[#f0f4fc] text-[#0f4cc8]'
                 : 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'
             }`}
-            >
+          >
             <Icon name={item.icon} />
             {t(item.label)}
           </Button>
