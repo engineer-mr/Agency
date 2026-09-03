@@ -1,0 +1,574 @@
+{
+  "common": {
+    "appName": "Agency",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "manage": "Manage",
+    "viewAll": "View all",
+    "all": "All",
+    "loading": "Loading"
+  },
+  "sidebar": {
+    "workspaceTitle": "Studio workspace",
+    "workspaceSubtitle": "Personal workspace",
+    "nav": {
+      "smartAssistant": "Smart Assistant",
+      "workbench": "Workbench",
+      "knowledgeBase": "Knowledge Base",
+      "project": "Projects",
+      "quantxAgent": "QuantX Agent",
+      "personalCenter": "Profile",
+      "connectionCenter": "Connections"
+    },
+    "comingSoon": {
+      "title": "Coming soon",
+      "body": "QuantX Agent is being prepared and will be available here later.",
+      "confirm": "Got it"
+    },
+    "planCard": {
+      "title": "Pro Plan",
+      "usage": "42% used this month"
+    }
+  },
+  "quantxAgent": {
+    "eyebrow": "QUANTX AGENT · BETA",
+    "title": "Trading signals and auto execution",
+    "subtitle": "Keep watching the market and act within your risk boundaries",
+    "status": {
+      "paused": "Agent paused",
+      "detail": "Observe only · No trading account connected",
+      "start": "Start Agent",
+      "quickOrder": "Quick order"
+    },
+    "signals": {
+      "title": "Live signals",
+      "subtitle": "Generated from enabled strategies, still subject to risk checks before execution",
+      "live": "LIVE",
+      "view": "View details",
+      "order": "Place order"
+    },
+    "market": {
+      "title": "Trading Agent marketplace",
+      "subtitle": "Choose an evaluated trading Agent and place orders after reviewing the data",
+      "viewAll": "View all",
+      "cta": "Place order"
+    },
+    "queue": {
+      "title": "Execution queue",
+      "subtitle": "All automated orders must pass strategy conditions and risk checks",
+      "viewAll": "View all orders",
+      "columns": {
+        "strategy": "Strategy / pair",
+        "direction": "Direction",
+        "amount": "Amount",
+        "status": "Status"
+      }
+    },
+    "control": {
+      "title": "Agent control",
+      "mode": "Restricted mode",
+      "entrySignal": "Receive trading signals",
+      "entrySignalDesc": "Push strategy trigger conditions in real time",
+      "autoOrder": "Auto order",
+      "autoOrderDesc": "Run only after all risk checks pass",
+      "risk": "Risk boundaries",
+      "edit": "Edit",
+      "limit": "Per-order limit",
+      "dailyLoss": "Daily max loss",
+      "drawdown": "Max drawdown",
+      "withdraw": "Withdrawal permission",
+      "saved": "Save settings"
+    },
+    "settlement": {
+      "title": "Accounts and settlement",
+      "subtitle": "Connection status and rebates update only after actual settlement",
+      "safe": "Safe",
+      "balanceTitle": "Pending settlement rebates",
+      "balanceHint": "Claimable after exchange settlement · Not withdrawable yet",
+      "manage": "Manage exchange connections"
+    },
+    "agents": {
+      "title": "Trading Agent marketplace",
+      "viewAll": "View all",
+      "items": [
+        {
+          "name": "Trend Follow Pro",
+          "summary": "Detect price breakouts with volume confirmation for BTC and ETH short-to-mid trends.",
+          "stats": "Stability 8.4",
+          "risk": "Risk 9.1",
+          "quality": "Data quality 9.1",
+          "score": "Overall 72"
+        },
+        {
+          "name": "Cross-market spread",
+          "summary": "Compare prices, funding rates, and execution costs across Binance and Hyperliquid.",
+          "stats": "Stability 8.4",
+          "risk": "Risk 9.1",
+          "quality": "Data quality 9.1",
+          "score": "Overall 81"
+        },
+        {
+          "name": "Volatility breakout watch",
+          "summary": "Monitor volatility expansion and key range breakouts for high-risk users.",
+          "stats": "Stability 8.4",
+          "risk": "Risk 9.1",
+          "quality": "Data quality 9.1",
+          "score": "Overall 81"
+        }
+      ]
+    },
+    "signalsList": [
+      {
+        "pair": "BTC / USDT · breakout watch",
+        "market": "Binance · 15m · 2 min ago",
+        "risk": "Bullish",
+        "score": "72"
+      },
+      {
+        "pair": "ETH / USDT · spread convergence",
+        "market": "Binance / Hyperliquid · 1h · 8 min ago",
+        "risk": "Neutral",
+        "score": "72"
+      },
+      {
+        "pair": "SOL / USDT · volatility expansion",
+        "market": "Hyperliquid · 5m · 14 min ago",
+        "risk": "Cautious",
+        "score": "72"
+      }
+    ],
+    "queueRows": [
+      { "strategy": "Trend follow", "symbol": "BTC / USDT · Binance", "direction": "BUY", "amount": "0.02 BTC", "status": "Pending" },
+      { "strategy": "Spread watch", "symbol": "ETH · cross exchange", "direction": "HOLD", "amount": "--", "status": "Watching" }
+    ],
+    "riskItems": {
+      "limit": "100 USDT",
+      "dailyLoss": "30 USDT",
+      "drawdown": "8%",
+      "withdraw": "Disabled"
+    }
+  },
+  "login": {
+    "brandTitle": "Agency",
+    "signUpTitle": "Join Agency",
+    "social": {
+      "google": "Sign in with Google",
+      "facebook": "Sign in with Facebook",
+      "github": "Sign in with GitHub",
+      "apple": "Sign in with Apple ID"
+    },
+    "orContinueWith": "Or continue with",
+    "emailPlaceholder": "Enter your email",
+    "getCode": "Get verification code",
+    "termsIntro": "By signing up you agree to our",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "verifyTitle": "Enter the verification code",
+    "verifySentTo": "We sent a code to {{email}}",
+    "verifyValid": "The code is valid for 5 minutes",
+    "verifyError": "Invalid code, please enter 666666",
+    "continue": "Continue",
+    "backStep": "Didn't receive a code? Go back"
+  },
+  "home": {
+    "eyebrow": "Your AI work partner",
+    "title": "Hi, I’ll help you get today’s work done",
+    "subtitle": "Tell me your goal, idea, or problem, and I’ll help you find the right Skill.",
+    "promptHint": "Tell me what you want to accomplish, and I’ll recommend a matching Skill",
+    "modelSelect": "Auto select model",
+    "modelMenuTitle": "Switch model",
+    "modelItems": {
+      "auto": { "label": "Smart model", "description": "Combine the best AI models to finish the task" },
+      "sol": { "label": "ChatGPT 5.6 Sol", "description": "" },
+      "terra": { "label": "ChatGPT 5.6 Terra", "description": "" },
+      "luna": { "label": "ChatGPT 5.6 Luna", "description": "" },
+      "geminiPro": { "label": "Gemini 3.1 Pro", "description": "" },
+      "geminiFlash": { "label": "Gemini 3.1 Flash", "description": "" },
+      "deepseek": { "label": "DeepSeek V4 Flash", "description": "" }
+    },
+    "menuItems": {
+      "addFile": "Add file",
+      "goal": "Goal",
+      "plan": "Plan",
+      "tools": "Tools",
+      "expert": "Experts",
+      "preset": "My presets"
+    },
+    "quickPrompts": {
+      "site": "Build an event website",
+      "poster": "Design a social media poster"
+    },
+    "chatBack": "Web design",
+    "chat": {
+      "user": "I’ve successfully deployed the online store and operations dashboard. What should I do next?",
+      "assistantName": "Agency",
+      "assistantBadge": "Smart model",
+      "intro": "Let me do a quick post-launch gap check: I’ll look at the current deployment, unfinished operations, and existing business records, then give you the single highest-priority next step. I’ll use the business workspace flow because this is about your actual BAUHAUSE store state, not a generic launch checklist.",
+      "loadedTools": "Loaded tools",
+      "h1": "1. Installation complete",
+      "h1Body": "The BAUHAUSE store template is installed, and both frontend and backend are deployed successfully.",
+      "h2": "2. Ready apps",
+      "h2Body": "• FORMA Store (website): the customer-facing BAUHAUSE online store and the protected owner order management page.",
+      "h3": "3. Included capabilities / current limits",
+      "list": [
+        "• Home page, catalog, and product detail pages",
+        "• Cart, order submission, and confirmation flow",
+        "• Real order records, starting in “Waiting for payment”",
+        "• User login and protected owner order management"
+      ],
+      "placeholder": "For example: build a spring campaign website for a specialty coffee shop...",
+      "context": "Add context",
+      "suggestions": {
+        "site": "Build an event website",
+        "poster": "Design a social media poster"
+      },
+      "send": "Send"
+    }
+  },
+  "knowledgeBase": {
+    "title": "Knowledge Base",
+    "searchPlaceholder": "Search projects",
+    "recent": "Recent",
+    "mine": "My files",
+    "team": "Team files",
+    "shared": "Shared with me",
+    "recentVisit": "Recently visited",
+    "myShared": "Shared by me",
+    "sharedWithMe": "Shared with me",
+    "all": "All",
+    "doc": "Docs",
+    "web": "Web",
+    "db": "Database",
+    "headers": { "name": "Name", "owner": "Owner", "location": "Location", "recent": "Recent access" },
+    "allType": "All types"
+  },
+  "knowledgeBaseDetail": {
+    "title": "Knowledge Base",
+    "bannerTitle": "From solo work to team collaboration",
+    "bannerSubtitle": "Every output becomes the start of the next collaboration",
+    "step1": "Work output",
+    "step2": "Saved to the library",
+    "step3": "Stay in sync with Agent",
+    "step4": "Team collaboration and reuse",
+    "introTitle": "🎉 Agency knowledge base just got upgraded 🎉",
+    "introLines": [
+      "This time, the knowledge base is more than just storage.",
+      "Save work done with Agent, then keep editing it together with Agent.",
+      "Move it into a team space, and teammates plus Agent can keep collaborating on the same content."
+    ],
+    "part1Title": "Step 1 | Save the result",
+    "part1Lines": [
+      "The “My docs” area in the knowledge base is your personal space and the default place for work created with Agent.",
+      "You can create and organize content yourself, or let Agent save results from the conversation directly."
+    ],
+    "part1Bullets": [
+      "Documents or web pages created with Agent: just say “save this to the library”.",
+      "Already generated and ready-to-share content: click “Share → Share as link” to share and save in one step."
+    ]
+  },
+  "project": {
+    "title": "Projects",
+    "subtitle": "Collaborate with others and turn ideas into deliverables",
+    "tipTag": "PROJECT TIP",
+    "tipTitle": "Give every project a clear next step",
+    "tipBody": "Start from a template or Skill, and the team can keep collaborating and delivering in one shared space.",
+    "createProject": "Create new project",
+    "myProjectsTitle": "My projects",
+    "myProjectsSubtitle": "Manage and continue your work",
+    "searchPlaceholder": "Search projects",
+    "templatesTitle": "Create from template",
+    "templatesSubtitle": "Choose a common workflow and start fast",
+    "createDialog": {
+      "title": "New project",
+      "name": "Project name",
+      "namePlaceholder": "Enter project name",
+      "instruction": "Prompt",
+      "template": "Choose template",
+      "connectors": "Connectors (optional)",
+      "experts": "Experts (optional)",
+      "skills": "Skills (optional)",
+      "add": "Add",
+      "warning": "Switching templates will overwrite the current content"
+    },
+    "templateDialog": {
+      "title": "Add personal authorized connector",
+      "body": "Once added, the current project can use the connector authenticated with your personal account. If you configure a public connector, you can do that after project creation.",
+      "currentTemplate": "Current template: {{title}}",
+      "complete": "Done"
+    },
+    "menuItems": { "top": "Pin", "share": "Share", "rename": "Rename", "delete": "Delete" }
+  },
+  "connectionCenter": {
+    "title": "Choose your IM tools",
+    "subtitle": "Connect the chat tools you use most so you can collaborate with Agency directly in messages.",
+    "footer": "Once connected, you can talk to Agency directly in IM",
+    "dialog": {
+      "title": "Connected",
+      "subtitle": "Scan to finish connecting",
+      "body": "Use your phone to scan and finish connecting {{toolName}}. After that, you can talk to Agency in the corresponding tool.",
+      "action": "After scanning, the authorization flow will start automatically and you can keep interacting with Agent in IM."
+    },
+    "tools": {
+      "wechat": { "name": "WeChat", "desc": "Chat with the assistant right inside WeChat", "action": "View" },
+      "whatsapp": { "name": "WhatsApp", "desc": "Chat with the assistant right inside WeChat", "badge": "Recommended", "action": "Connect" },
+      "telegram": { "name": "Telegram", "desc": "Call the assistant in private chats or groups and keep tasks in sync", "badge": "Recommended", "action": "Connect" },
+      "discord": { "name": "Discord", "desc": "Join community servers and share work in channels", "badge": "Group chat", "action": "Connect" },
+      "slack": { "name": "Slack", "desc": "Connect to team channels so updates don’t interrupt the flow", "badge": "Group chat", "action": "Connect" },
+      "line": { "name": "LINE", "desc": "Use the AI assistant in private chats or family work groups", "action": "Connect" },
+      "lark": { "name": "Feishu / Lark", "desc": "Connect to the team collaboration space and handle requests in one place", "badge": "Group chat", "action": "Connect" }
+    }
+  },
+  "author": {
+    "title": "Profile",
+    "eyebrow": "PERSONAL CENTER",
+    "subtitle": "Manage your account info, working style, and plan settings",
+    "profile": {
+      "name": "Jess",
+      "workspace": "Studio workspace",
+      "plan": "Pro Plan"
+    },
+    "editProfile": {
+      "title": "Edit profile",
+      "name": "Name",
+      "namePlaceholder": "Enter name",
+      "email": "Email",
+      "emailPlaceholder": "Enter email"
+    },
+    "preferences": {
+      "title": "Work preferences",
+      "subtitle": "Make Skill fit the way you work",
+      "defaultModel": "Default model",
+      "defaultModelDesc": "Automatically choose the best model for the current task",
+      "language": "Language",
+      "languageDesc": "Used for generated content and UI",
+      "appearance": "Appearance",
+      "appearanceDesc": "Follow system settings automatically",
+      "appearanceValue": "Light"
+    },
+    "security": {
+      "title": "Account & security",
+      "subtitle": "Protect your workspace and data",
+      "emailVerified": "Email verified",
+      "emailVerifiedDesc": "jess@studio.example",
+      "completed": "Done",
+      "loginProtection": "Login protection",
+      "loginProtectionDesc": "We recommend turning on 2FA",
+      "goSettings": "Go to settings",
+      "activeDevices": "Active devices",
+      "activeDevicesDesc": "2 devices are currently in use",
+      "view": "View"
+    },
+    "plan": {
+      "title": "Pro Plan",
+      "subtitle": "Suitable for individual creators and small teams",
+      "usageLabel": "Usage this month",
+      "usageValue": "42%",
+      "usageDetail": "420 / 1,000 credits used",
+      "manage": "Manage plan"
+    },
+    "languageSelector": {
+      "zh": "Chinese",
+      "en": "English"
+    },
+    "languageOptions": {
+      "zh": "Chinese",
+      "en": "English"
+    }
+  },
+  "planPage": {
+    "eyebrow": "Choose a subscription or",
+    "coin": "buy credits",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlyBadge": "64% off",
+    "paymentMethod": "Payment method:",
+    "cardOrBank": "Credit card / bank card",
+    "learnMore": "Learn more",
+    "promo": "Use a promo code and save instantly",
+    "safetyTitle": "Security & compliance",
+    "safetySubtitle": "Trust center",
+    "planContain": "Includes all {{name}} benefits",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "description": "The ideal starting point for AI productivity tools, covering high-frequency use cases",
+        "monthlyPrice": "16.67",
+        "monthlyOriginal": "$24.99",
+        "monthlySuffix": "/mo",
+        "annualPrice": "$199.99",
+        "annualOriginal": "$299.88",
+        "annualNote": "/year, billed annually",
+        "discount": "Up to 67% off, save $99.89",
+        "monthlyPoints": "12,500 credits/month",
+        "upgrade": "Upgrade now",
+        "badge": "67% off",
+        "sections": { "main": "Core AI features" },
+        "features": [
+          "120 credits/day, login bonus",
+          "Shared SkyClaw assistant",
+          "3 devices online at once",
+          "50GB knowledge base storage",
+          "AI search enhancements (with live web search)",
+          "AI editing (docs/PPT/images/web pages/video)"
+        ]
+      },
+      "plus": {
+        "name": "Plus",
+        "description": "Best for professionals, with early Beta access and priority access to top-tier models",
+        "trialPrice": "1",
+        "trialNote": "7-day trial",
+        "annualPrice": "$399.90",
+        "annualOriginal": "$599.88",
+        "annualNote": "/year, billed annually",
+        "discount": "Up to 67% off, save $199.98",
+        "monthlyPoints": "800 credits/day, 28,000 credits/month after subscription",
+        "trialCta": "$1 start 7-day trial",
+        "upgrade": "Upgrade now",
+        "badge": "67% off",
+        "secondaryPrice": "$33.32",
+        "secondaryOriginal": "$49.99",
+        "sections": { "main": "Core AI features" },
+        "features": [
+          "Dedicated SkyClaw assistant online 24/7",
+          "Priority use of top-tier AI models",
+          "Choose top models (Claude, ChatGPT, Gemini, DeepSeek, Kimi)",
+          "Beta feature early access",
+          "4 devices online at once",
+          "1T knowledge base storage"
+        ]
+      },
+      "ultra": {
+        "name": "Ultra",
+        "description": "For the price of a latte a day, you get a private AI Agent with top-tier experience and speed",
+        "monthlyPrice": "166.66",
+        "monthlyOriginal": "$249.99",
+        "monthlySuffix": "/mo",
+        "annualPrice": "$1,999.90",
+        "annualOriginal": "$2,999.88",
+        "annualNote": "/year, billed annually",
+        "discount": "Up to 67% off, save $999.98",
+        "monthlyPoints": "150,000 credits/month",
+        "upgrade": "Upgrade now",
+        "badge": "67% off",
+        "sections": { "main": "Core AI features" },
+        "features": [
+          "120 credits/day, login bonus",
+          "Dedicated SkyClaw assistant online 24/7",
+          "Unlimited access to top AI models (private channel)",
+          "Choose top models (Claude, ChatGPT, Gemini, DeepSeek, Kimi)",
+          "All Beta features unlocked first",
+          "8 devices online at once",
+          "3T knowledge base storage"
+        ]
+      }
+    }
+  },
+  "workbench": {
+    "tabs": {
+      "daily": "Daily work",
+      "web3": "Web3",
+      "skills": "Skill plaza",
+      "task": "Task reminders",
+      "tools": "Tools"
+    },
+    "daily": {
+      "title": "Featured Skills",
+      "subtitle": "Turn complex work into one-step professional tools",
+      "viewAll": "View all",
+      "web3Title": "Web3 workbench",
+      "web3Subtitle": "Professional Skills for on-chain projects, communities, and digital assets",
+      "beta": "Beta"
+    },
+    "skillsMarket": {
+      "title": "Skill plaza",
+      "subtitle": "Web3 visual Skills distilled from the Hummingbot connector ecosystem",
+      "summary": "50+ connectors · 18 featured Skills",
+      "filters": ["All", "CEX", "DEX", "Strategy tools"]
+    },
+    "tasks": {
+      "title": "Task reminders",
+      "subtitle": "Work and deadlines to focus on today",
+      "create": "+ New reminder",
+      "status": {
+        "soon": "Due soon",
+        "todo": "To do"
+      }
+    },
+    "tools": {
+      "title": "Quick tools",
+      "subtitle": "Frequently used capabilities are all here",
+      "hint": "Click to start",
+      "workbenchTitle": "Common tools workbench",
+      "workbenchSubtitle": "Professional Skills for content creation and daily operations"
+    },
+    "data": {
+      "dailyWorkCards": [
+        {
+          "title": "Website creation",
+          "tag": "Recommended",
+          "desc": "Generate a complete website from a short description, including pages, copy, and responsive layout.",
+          "meta": "Web builder"
+        },
+        {
+          "title": "Poster creation",
+          "tag": "",
+          "desc": "Quickly generate visual posters for social media, events, and promotions.",
+          "meta": "Visual creator"
+        },
+        {
+          "title": "Marketing copy",
+          "tag": "",
+          "desc": "Generate high-converting copy for products, events, and social content.",
+          "meta": "Copywriter"
+        },
+        {
+          "title": "Data analysis",
+          "tag": "",
+          "desc": "Upload a file and get clear insights, charts, and action suggestions.",
+          "meta": "Analyst"
+        }
+      ],
+      "web3Cards": [
+        { "title": "Community operations", "desc": "Generate Discord and Telegram announcements and event plans.", "meta": "Community" },
+        { "title": "Project research", "desc": "Organize sector, protocol, and competitor material into a research summary.", "meta": "Research" },
+        { "title": "Token content", "desc": "Generate promotional content for token launches, airdrops, and ecosystem events.", "meta": "Content" }
+      ],
+      "web3Stats": [
+        { "label": "Connected connectors", "value": "50+", "hint": "Exchanges / wallets / DEX" },
+        { "label": "Supported market types", "value": "3 types", "hint": "Spot / futures / on-chain" },
+        { "label": "Live capabilities", "value": "Quotes / balances", "hint": "Sync refresh" }
+      ],
+      "web3Connectors": [
+        { "name": "Binance", "desc": "Spot, futures, and funding rate monitoring", "meta": "CEX" },
+        { "name": "Hyperliquid", "desc": "High-frequency market data and position monitoring", "meta": "Perp" },
+        { "name": "Uniswap", "desc": "On-chain liquidity and trading pair analysis", "meta": "DEX" },
+        { "name": "OKX", "desc": "Asset balances, quotes, and strategy connections", "meta": "CEX" }
+      ],
+      "web3Strategies": [
+        { "title": "Cross-market spread watch", "desc": "Compare price differences and arbitrage opportunities across markets in real time." },
+        { "title": "Liquidity pool analysis", "desc": "Aggregate pool depth, fees, and slippage to judge tradability quickly." },
+        { "title": "Market data summary", "desc": "Turn quotes, balances, and key volatility into a concise summary." }
+      ],
+      "skillsMarketItems": [
+        { "title": "Binance market connection", "desc": "View spot and perpetual quotes and quickly build market watch tasks." },
+        { "title": "Bitget futures analysis", "desc": "Organize futures market, funding rates, and price changes." },
+        { "title": "OKX market monitoring", "desc": "Track key pairs and generate a daily market summary." },
+        { "title": "Bybit trading assistant", "desc": "Turn market data into spot and perpetual trade observations." },
+        { "title": "Coinbase asset watch", "desc": "Monitor major asset prices, volume, and market changes." },
+        { "title": "Kraken quote report", "desc": "Turn exchange market data into a readable market report." }
+      ],
+      "taskReminderItems": [
+        { "title": "Finish spring campaign poster draft", "time": "Today 14:00 · Poster creation", "status": "Due soon" },
+        { "title": "Confirm Velora website launch copy", "time": "Tomorrow 10:00 · Website creation", "status": "To do" },
+        { "title": "Organize this week’s project assets", "time": "Friday · Asset library", "status": "To do" }
+      ],
+      "toolCards": [
+        { "title": "Skills library", "desc": "Browse 24 professional Skills" },
+        { "title": "My projects", "desc": "View and manage recent projects" },
+        { "title": "Chat", "desc": "Continue collaborating with AI" },
+        { "title": "Asset library", "desc": "Manage brand and creative assets" }
+      ]
+    }
+  }
+}

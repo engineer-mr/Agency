@@ -1,0 +1,580 @@
+{
+  "common": {
+    "appName": "Agency",
+    "confirm": "确定",
+    "cancel": "取消",
+    "edit": "编辑",
+    "manage": "管理",
+    "viewAll": "查看全部",
+    "all": "全部",
+    "loading": "加载中"
+  },
+  "sidebar": {
+    "workspaceTitle": "Studio workspace",
+    "workspaceSubtitle": "个人工作区",
+    "nav": {
+      "smartAssistant": "智能助手",
+      "workbench": "工作台",
+      "knowledgeBase": "知识库",
+      "project": "项目",
+      "quantxAgent": "QuantX Agent",
+      "personalCenter": "个人中心",
+      "connectionCenter": "连接中心"
+    },
+    "comingSoon": {
+      "title": "敬请期待",
+      "body": "QuantX Agent 正在准备中，之后会在这里开放。",
+      "confirm": "我知道了"
+    },
+    "planCard": {
+      "title": "Pro 方案",
+      "usage": "本月已用 42%"
+    }
+  },
+  "quantxAgent": {
+    "eyebrow": "QUANTX AGENT · BETA",
+    "title": "交易信号与自动执行",
+    "subtitle": "让 Agent 持续观察市场，在你的风险边界内行动",
+    "status": {
+      "paused": "Agent 已暂停",
+      "detail": "仅观察模式 · 未连接交易账户",
+      "start": "启动 Agent",
+      "quickOrder": "快速下单"
+    },
+    "signals": {
+      "title": "实时信号",
+      "subtitle": "基于已启用策略生成，执行前仍需满足风控条件",
+      "live": "LIVE",
+      "view": "查看详情",
+      "order": "一键下单"
+    },
+    "market": {
+      "title": "交易 Agent 广场",
+      "subtitle": "选择经过平台评估的交易 Agent，查看数据后直接下单",
+      "viewAll": "查看全部",
+      "cta": "直接下单"
+    },
+    "queue": {
+      "title": "执行队列",
+      "subtitle": "所有自动下单均需经过策略条件与风险检查",
+      "viewAll": "查看全部订单",
+      "columns": {
+        "strategy": "策略 / 标的",
+        "direction": "方向",
+        "amount": "数量",
+        "status": "状态"
+      }
+    },
+    "control": {
+      "title": "Agent 控制",
+      "mode": "受限模式",
+      "entrySignal": "接收交易信号",
+      "entrySignalDesc": "实时推送策略触发条件",
+      "autoOrder": "自动下单",
+      "autoOrderDesc": "仅在全部风控通过后执行",
+      "risk": "风险边界",
+      "edit": "编辑",
+      "limit": "单笔限额",
+      "dailyLoss": "每日最大亏损",
+      "drawdown": "最大回撤",
+      "withdraw": "提现权限",
+      "saved": "保存配置"
+    },
+    "settlement": {
+      "title": "账户与结算",
+      "subtitle": "连接状态和返佣仅按实际结算更新",
+      "safe": "安全",
+      "balanceTitle": "待结算交易返佣",
+      "balanceHint": "交易所结算后可领取 · 当前不可提现",
+      "manage": "管理交易所连接"
+    },
+    "agents": {
+      "title": "交易 Agent 广场",
+      "viewAll": "查看全部",
+      "items": [
+        {
+          "name": "趋势跟随 Pro",
+          "summary": "识别价格突破与成交量确认，适合 BTC、ETH 短中周期趋势。",
+          "stats": "稳定性 8.4",
+          "risk": "风控 9.1",
+          "quality": "数据质量 9.1",
+          "score": "综合 72"
+        },
+        {
+          "name": "跨市场价差",
+          "summary": "比较 Binance 与 Hyperliquid 的价格、资金费率和执行成本。",
+          "stats": "稳定性 8.4",
+          "risk": "风控 9.1",
+          "quality": "数据质量 9.1",
+          "score": "综合 81"
+        },
+        {
+          "name": "波动突破观察",
+          "summary": "监测波动率放大和关键区间突破，适合高风险偏好用户。",
+          "stats": "稳定性 8.4",
+          "risk": "风控 9.1",
+          "quality": "数据质量 9.1",
+          "score": "综合 81"
+        }
+      ]
+    },
+    "signalsList": [
+      {
+        "pair": "BTC / USDT · 突破观察",
+        "market": "Binance · 15m · 2 分钟前",
+        "risk": "偏多",
+        "score": "72"
+      },
+      {
+        "pair": "ETH / USDT · 价差收敛",
+        "market": "Binance / Hyperliquid · 1h · 8 分钟前",
+        "risk": "中性",
+        "score": "72"
+      },
+      {
+        "pair": "SOL / USDT · 波动放大",
+        "market": "Hyperliquid · 5m · 14 分钟前",
+        "risk": "谨慎",
+        "score": "72"
+      }
+    ],
+    "queueRows": [
+      { "strategy": "趋势跟随", "symbol": "BTC / USDT · Binance", "direction": "BUY", "amount": "0.02 BTC", "status": "待确认" },
+      { "strategy": "价差观察", "symbol": "ETH · 双交易所", "direction": "HOLD", "amount": "--", "status": "观察中" }
+    ],
+    "riskItems": {
+      "limit": "100 USDT",
+      "dailyLoss": "30 USDT",
+      "drawdown": "8%",
+      "withdraw": "已关闭"
+    }
+  },
+  "login": {
+    "brandTitle": "Agency",
+    "signUpTitle": "注册加入Agency",
+    "social": {
+      "google": "Sign in with Google",
+      "facebook": "Sign in with Facebook",
+      "github": "Sign in with GitHub",
+      "apple": "Sign in with Apple ID"
+    },
+    "orContinueWith": "Or continue with",
+    "emailPlaceholder": "请输入邮箱",
+    "getCode": "获取验证码",
+    "termsIntro": "注册即表示同意我们的",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "verifyTitle": "请输入验证码",
+    "verifySentTo": "我们已将验证码发送到 {{email}}",
+    "verifyValid": "验证码在 5 分钟内有效",
+    "verifyError": "验证码错误，请输入 666666",
+    "continue": "继续",
+    "backStep": "没有收到验证码？返回上一步"
+  },
+  "home": {
+    "eyebrow": "你的 AI 工作伙伴",
+    "title": "你好，我来帮你完成今天的工作",
+    "subtitle": "告诉我你的目标、想法或遇到的问题，我会帮你找到合适的 Skill，一起把事情做好。",
+    "promptHint": "告诉我你想完成什么，我会推荐合适的 Skill",
+    "modelSelect": "自动选择模型",
+    "modelMenuTitle": "切换模型",
+    "modelItems": {
+      "auto": { "label": "智选模型", "description": "智能组合最佳AI模型完成任务" },
+      "sol": { "label": "ChatGPT 5.6 Sol", "description": "" },
+      "terra": { "label": "ChatGPT 5.6 Terra", "description": "" },
+      "luna": { "label": "ChatGPT 5.6 Luna", "description": "" },
+      "geminiPro": { "label": "Gemini 3.1 Pro", "description": "" },
+      "geminiFlash": { "label": "Gemini 3.1 Flash", "description": "" },
+      "deepseek": { "label": "DeepSeek V4 Flash", "description": "" }
+    },
+    "menuItems": {
+      "addFile": "添加文件",
+      "goal": "目标",
+      "plan": "计划",
+      "tools": "工具",
+      "expert": "专家",
+      "preset": "我的预设提示词"
+    },
+    "quickPrompts": {
+      "site": "制作一个活动网站",
+      "poster": "设计一张社媒海报"
+    },
+    "chatBack": "网页制作",
+    "chat": {
+      "user": "我已经成功部署了在线商店和经营后台，下一步应该干什么呢",
+      "assistantName": "Agency",
+      "assistantBadge": "智选模型",
+      "intro": "我先帮你做一次“上线后差距检查”：看商店当前部署状态、尚未完成的经营环节和已有业务记录，然后只给你一个最优先的下一步建议。我会使用业务工作区流程，因为这不是泛泛的开店建议，而是要基于你这家 BAUHAUSE 商店的实际状态来判断。",
+      "loadedTools": "已加载工具",
+      "h1": "1.安装完成",
+      "h1Body": "BAUHAUSE 的商店模板已安装完成，在线商店的前后端均已成功部署。",
+      "h2": "2.已就绪的应用",
+      "h2Body": "• FORMA Store（网站）：面向顾客的 BAUHAUSE 在线商店及受保护的店主订单管理页面。",
+      "h3": "3.已包含的能力 / 当前限制",
+      "list": [
+        "• 首页、商品目录和商品详情页",
+        "• 购物车、订单提交和订单确认流程",
+        "• 真实订单记录，订单初始状态为 “等待付款”",
+        "• 用户登录及受保护的店主订单管理功能"
+      ],
+      "placeholder": "例如：为一家精品咖啡店制作一个春季活动网站...",
+      "context": "添加上下文",
+      "suggestions": {
+        "site": "制作一个活动网站",
+        "poster": "设计一张社媒海报"
+      },
+      "send": "发送"
+    }
+  },
+  "knowledgeBase": {
+    "title": "知识库",
+    "searchPlaceholder": "搜索项目",
+    "recent": "最近",
+    "mine": "我的资料",
+    "team": "团队资料",
+    "shared": "与我共享",
+    "recentVisit": "最近访问",
+    "myShared": "我分享的",
+    "sharedWithMe": "与我共享",
+    "all": "全部",
+    "doc": "文档",
+    "web": "网页",
+    "db": "数据库",
+    "headers": { "name": "名称", "owner": "所有者", "location": "位置", "recent": "最近访问" },
+    "allType": "全部类型"
+  },
+  "knowledgeBaseDetail": {
+    "title": "知识库",
+    "bannerTitle": "从超级个体到超级团队",
+    "bannerSubtitle": "让每次产出，都成为下一次协作的开始",
+    "step1": "任务里的产物",
+    "step2": "存进资料库",
+    "step3": "和 Agent 持续协同",
+    "step4": "团队协作和复用",
+    "introTitle": "🎉Agency 知识库全新升级 🎉",
+    "introLines": [
+      "这一次，知识库不只是“存得下”。",
+      "你和 Agent 一起做的产物存进来，然后和 Agent 一起协同编辑；",
+      "挪进团队空间，同事和 Agent 也能在同一份内容上持续协同。"
+    ],
+    "part1Title": "第一步｜把成果存下来",
+    "part1Lines": [
+      "知识库里的「我的文档」，是你的个人空间，也是你和 Agent 共同产物的默认落脚点。",
+      "你可以自己新建、整理内容，也可以让 Agent 把会话里的成果直接存进来。"
+    ],
+    "part1Bullets": [
+      "和 Agent 一起完成的文档或网页：直接说“把刚才这份内容存到资料库”。",
+      "已经生成、准备发给别人看的内容：点击“分享 → 以链接形式分享”，分享和保存一次完成。"
+    ]
+  },
+  "project": {
+    "title": "项目",
+    "subtitle": "多人协同，把想法变成可以交付的成果",
+    "tipTag": "PROJECT TIP",
+    "tipTitle": "让每个项目，都有清晰的下一步",
+    "tipBody": "从模板或 Skill 开始，团队可以在同一个空间里持续协作和交付。",
+    "createProject": "创建新项目",
+    "myProjectsTitle": "我的项目",
+    "myProjectsSubtitle": "管理和继续处理你的创作",
+    "searchPlaceholder": "搜索项目",
+    "templatesTitle": "从模板创建",
+    "templatesSubtitle": "选择一个常用工作流，快速开始项目",
+    "createDialog": {
+      "title": "新建项目",
+      "name": "项目名称",
+      "namePlaceholder": "请输入项目名称",
+      "instruction": "指令",
+      "template": "选择模板",
+      "connectors": "连接器（可选）",
+      "experts": "专家（可选）",
+      "skills": "技能（可选）",
+      "add": "添加",
+      "warning": "切换模板后会覆盖当前编辑内容"
+    },
+    "templateDialog": {
+      "title": "添加个人授权连接器",
+      "body": "添加后可供当前项目使用个人账号授权连接。如果配置公共连接器，可在创建项目完成后再配置。",
+      "currentTemplate": "当前模板：{{title}}",
+      "complete": "完成"
+    },
+    "menuItems": { "top": "置顶", "share": "分享", "rename": "重命名", "delete": "删除" }
+  },
+  "connectionCenter": {
+    "title": "选择你的 IM 工具",
+    "subtitle": "把常用聊天工具接进来，就能直接在消息里和 Agency 协作。",
+    "footer": "完成连接后，即可直接在 IM 里和 Agency 对话",
+    "dialog": {
+      "title": "连接成功",
+      "subtitle": "扫码完成连接",
+      "body": "请使用手机扫码完成 {{toolName}} 的连接，之后即可在对应工具里与 Agency 进行对话。",
+      "action": "扫码后会自动进入授权流程，完成后可继续在 IM 中与 Agent 互动。"
+    },
+    "tools": {
+      "wechat": { "name": "微信", "desc": "在微信里随时与智能助手对话", "action": "查看" },
+      "whatsapp": { "name": "WhatsApp", "desc": "在微信里随时与智能助手对话", "badge": "推荐", "action": "连接" },
+      "telegram": { "name": "Telegram", "desc": "私聊或群组中调用智能助手，持续同步任务", "badge": "推荐", "action": "连接" },
+      "discord": { "name": "Discord", "desc": "加入社区服务器，在频道中共享工作成果", "badge": "群聊", "action": "连接" },
+      "slack": { "name": "Slack", "desc": "接入团队频道，让结果推送不打扰节奏", "badge": "群聊", "action": "连接" },
+      "line": { "name": "LINE", "desc": "在私聊或家庭工作群里使用 AI 助手", "action": "连接" },
+      "lark": { "name": "飞书 / Lark", "desc": "接入团队协作空间，统一处理工作请求", "badge": "群聊", "action": "连接" }
+    }
+  },
+  "author": {
+    "title": "个人中心",
+    "eyebrow": "PERSONAL CENTER",
+    "subtitle": "管理你的账号信息、工作方式和方案设置",
+    "profile": {
+      "name": "Jess",
+      "workspace": "Studio workspace",
+      "plan": "Pro 方案"
+    },
+    "editProfile": {
+      "title": "编辑资料",
+      "name": "名称",
+      "namePlaceholder": "请输入名称",
+      "email": "邮箱",
+      "emailPlaceholder": "请输入邮箱"
+    },
+    "preferences": {
+      "title": "工作偏好",
+      "subtitle": "让 Skill 更符合你的工作方式",
+      "defaultModel": "默认模型",
+      "defaultModelDesc": "自动选择最适合当前任务的模型",
+      "language": "语言",
+      "languageDesc": "用于生成内容和界面显示",
+      "appearance": "外观",
+      "appearanceDesc": "根据系统设置自动切换",
+      "appearanceValue": "浅色"
+    },
+    "security": {
+      "title": "账户与安全",
+      "subtitle": "保护你的工作空间和数据",
+      "emailVerified": "邮箱已验证",
+      "emailVerifiedDesc": "jess@studio.example",
+      "completed": "已完成",
+      "loginProtection": "登录保护",
+      "loginProtectionDesc": "建议开启双重验证",
+      "goSettings": "去设置",
+      "activeDevices": "活跃设备",
+      "activeDevicesDesc": "当前 2 台设备正在使用",
+      "view": "查看"
+    },
+    "plan": {
+      "title": "Pro 方案",
+      "subtitle": "适合个人创作者和小型团队",
+      "usageLabel": "本月用量",
+      "usageValue": "42%",
+      "usageDetail": "已使用 420 / 1,000 credits",
+      "manage": "管理方案"
+    },
+    "languageSelector": {
+      "zh": "简体中文",
+      "en": "English"
+    },
+    "languageOptions": {
+      "zh": "简体中文",
+      "en": "English"
+    }
+  },
+  "planPage": {
+    "eyebrow": "选择想要订阅的会员 或",
+    "coin": "购买积分",
+    "monthly": "每月",
+    "yearly": "每年",
+    "yearlyBadge": "64折",
+    "paymentMethod": "支付方式:",
+    "cardOrBank": "信用卡 / 银行卡",
+    "learnMore": "了解更多",
+    "promo": "使用优惠码，立享折扣",
+    "safetyTitle": "安全与合规",
+    "safetySubtitle": "信任中心",
+    "planContain": "包含所有 {{name}} 用户权益",
+    "plans": {
+      "basic": {
+        "name": "Basic",
+        "description": "探索AI生产力工具的理想起点，覆盖高频使用场景",
+        "monthlyPrice": "16.67",
+        "monthlyOriginal": "$24.99",
+        "monthlySuffix": "/月",
+        "annualPrice": "$199.99",
+        "annualOriginal": "$299.88",
+        "annualNote": "/年，按年计费",
+        "discount": "低至67折，立省 $99.89",
+        "monthlyPoints": "12,500 积分/月",
+        "upgrade": "立即升级",
+        "badge": "67折",
+        "sections": {
+          "main": "核心 AI 功能"
+        },
+        "features": [
+          "120积分/日，登录赠礼",
+          "共享SkyClaw智能助手",
+          "3台设备同时在线",
+          "50GB 知识库容量",
+          "AI 搜索增强（含联网实时搜索）",
+          "AI 编辑能力（文档/PPT/图片/网页/视频）"
+        ]
+      },
+      "plus": {
+        "name": "Plus",
+        "description": "专业用户首选，Beta功能抢先体验，顶级模型优先访问",
+        "trialPrice": "1",
+        "trialNote": "试用7天",
+        "annualPrice": "$399.90",
+        "annualOriginal": "$599.88",
+        "annualNote": "/年，按年计费",
+        "discount": "低至67折，立省 $199.98",
+        "monthlyPoints": "800积分/日，订阅后 28,000积分/月",
+        "trialCta": "$1 开始7日试用",
+        "upgrade": "立即升级",
+        "badge": "67折",
+        "secondaryPrice": "$33.32",
+        "secondaryOriginal": "$49.99",
+        "sections": {
+          "main": "核心 AI 功能"
+        },
+        "features": [
+          "专属自定义 7*24小时在线 SkyClaw 智能助手",
+          "优先使用顶级 AI 模型（优先队列）",
+          "自选顶级模型（Claude, ChatGPT, Gemini, DeepSeek, Kimi）",
+          "Beta 功能抢先体验",
+          "4台设备同时在线",
+          "1T 知识库容量"
+        ]
+      },
+      "ultra": {
+        "name": "Ultra",
+        "description": "每日一杯拿铁的价格，拥有私有化 AI Agent 顶级体验与速度",
+        "monthlyPrice": "166.66",
+        "monthlyOriginal": "$249.99",
+        "monthlySuffix": "/月",
+        "annualPrice": "$1,999.90",
+        "annualOriginal": "$2,999.88",
+        "annualNote": "/年，按年计费",
+        "discount": "低至67折，立省 $999.98",
+        "monthlyPoints": "150,000 积分/月",
+        "upgrade": "立即升级",
+        "badge": "67折",
+        "sections": {
+          "main": "核心 AI 功能"
+        },
+        "features": [
+          "120积分/日，登录赠礼",
+          "专属自定义 7*24小时在线 SkyClaw 智能助手",
+          "不限速使用顶级 AI 模型（专属通道）",
+          "自选顶级模型（Claude, ChatGPT, Gemini, DeepSeek, Kimi）",
+          "全量 Beta 功能首批解锁",
+          "8台设备同时在线",
+          "3T 知识库容量"
+        ]
+      }
+    }
+  },
+  "workbench": {
+    "tabs": {
+      "daily": "日常工作",
+      "web3": "Web3",
+      "skills": "技能广场",
+      "task": "任务提醒",
+      "tools": "常用工具"
+    },
+    "daily": {
+      "title": "精选 Skills",
+      "subtitle": "把复杂工作变成一步到位的专业工具",
+      "viewAll": "查看全部",
+      "web3Title": "Web3 工作台",
+      "web3Subtitle": "面向链上项目、社区和数字资产的专业 Skills",
+      "beta": "Beta"
+    },
+    "skillsMarket": {
+      "title": "技能广场",
+      "subtitle": "从 Hummingbot 连接器体系提炼的 Web3 可视化 Skills",
+      "summary": "50+ 连接器 · 18 个精选 Skills",
+      "filters": ["全部", "CEX", "DEX", "策略工具"]
+    },
+    "tasks": {
+      "title": "任务提醒",
+      "subtitle": "今天需要关注的工作和截止时间",
+      "create": "+ 新建提醒",
+      "status": {
+        "soon": "即将到期",
+        "todo": "待处理"
+      }
+    },
+    "tools": {
+      "title": "快捷工具",
+      "subtitle": "常用能力都集中在这里",
+      "hint": "点击即可开始",
+      "workbenchTitle": "常用工具工作台",
+      "workbenchSubtitle": "面向内容创作和日常运营的专业 Skills"
+    },
+    "data": {
+      "dailyWorkCards": [
+        {
+          "title": "网站制作",
+          "tag": "推荐",
+          "desc": "从一句描述生成完整的网站，包含页面、文案与响应式布局。",
+          "meta": "Web builder"
+        },
+        {
+          "title": "海报制作",
+          "tag": "",
+          "desc": "快速生成适合社交媒体、活动与推广的视觉海报。",
+          "meta": "Visual creator"
+        },
+        {
+          "title": "营销文案",
+          "tag": "",
+          "desc": "为产品、活动和社交媒体生成有转化力的内容。",
+          "meta": "Copywriter"
+        },
+        {
+          "title": "数据分析",
+          "tag": "",
+          "desc": "上传文件，获得清晰的洞察、图表和行动建议。",
+          "meta": "Analyst"
+        }
+      ],
+      "web3Cards": [
+        { "title": "社区运营", "desc": "生成 Discord、Telegram 社区公告与活动方案。", "meta": "社区" },
+        { "title": "项目研究", "desc": "整理赛道、协议与竞品资料，输出研究摘要。", "meta": "研究" },
+        { "title": "代币内容", "desc": "为代币发布、空投和生态活动生成传播内容。", "meta": "内容" }
+      ],
+      "web3Stats": [
+        { "label": "已接入连接器", "value": "50+", "hint": "交易所 / 钱包 / DEX" },
+        { "label": "支持市场类型", "value": "3类", "hint": "现货 / 合约 / 链上" },
+        { "label": "实时能力", "value": "行情 / 余额", "hint": "同步刷新" }
+      ],
+      "web3Connectors": [
+        { "name": "Binance", "desc": "现货、合约和资金费率观察", "meta": "CEX" },
+        { "name": "Hyperliquid", "desc": "高频市场数据与仓位监控", "meta": "Perp" },
+        { "name": "Uniswap", "desc": "链上流动性与交易对分析", "meta": "DEX" },
+        { "name": "OKX", "desc": "资产余额、行情和策略连接", "meta": "CEX" }
+      ],
+      "web3Strategies": [
+        { "title": "跨市场价差观察", "desc": "实时比较不同市场的价格偏差与套利机会。" },
+        { "title": "流动性池分析", "desc": "聚合池深度、费用与滑点，快速判断可交易性。" },
+        { "title": "市场数据摘要", "desc": "把行情、余额和关键波动整理成简洁摘要。" }
+      ],
+      "skillsMarketItems": [
+        { "title": "Binance 市场连接", "desc": "查看现货与永续行情，快速建立市场观察任务。" },
+        { "title": "Bitget 合约分析", "desc": "整理合约市场、资金费率与价格变化。" },
+        { "title": "OKX 市场监控", "desc": "追踪重点交易对并生成每日市场摘要。" },
+        { "title": "Bybit 交易助手", "desc": "根据市场数据整理现货与永续交易观察。" },
+        { "title": "Coinbase 资产观察", "desc": "关注主流资产价格、成交量与市场变化。" },
+        { "title": "Kraken 行情报告", "desc": "把交易所市场数据整理成可读的行情报告。" }
+      ],
+      "taskReminderItems": [
+        { "title": "完成春季活动海报初稿", "time": "今天 14:00 · 海报制作", "status": "即将到期" },
+        { "title": "确认 Velora 官网发布内容", "time": "明天 10:00 · 网站制作", "status": "待处理" },
+        { "title": "整理本周项目素材", "time": "周五 · 素材库", "status": "待处理" }
+      ],
+      "toolCards": [
+        { "title": "Skills 库", "desc": "浏览 24 个专业 Skill" },
+        { "title": "我的项目", "desc": "查看和管理最近项目" },
+        { "title": "对话", "desc": "与 AI 继续协作" },
+        { "title": "素材库", "desc": "管理品牌与创作素材" }
+      ]
+    }
+  }
+}
