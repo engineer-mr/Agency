@@ -9,9 +9,9 @@ export function Web3Tab() {
   return (
     <div className="space-y-6">
       <section className="space-y-3">
-        <h2 className="text-[28px] font-semibold tracking-tight text-slate-900">Web3 Skills 工作台</h2>
+        <h2 className="text-[28px] font-semibold tracking-tight text-slate-900">{t('workbench.web3.title')}</h2>
         <p className="max-w-3xl text-sm leading-6 text-slate-500">
-          把交易所连接、市场数据和策略配置变成可直接使用的工具
+          {t('workbench.web3.subtitle')}
         </p>
       </section>
 
@@ -31,14 +31,14 @@ export function Web3Tab() {
         <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <h3 className="text-lg font-semibold text-slate-900">交易所连接器</h3>
-              <p className="mt-1 text-sm text-slate-500">查看可用交易所和链上入口</p>
+              <h3 className="text-lg font-semibold text-slate-900">{t('workbench.web3.connectorsTitle')}</h3>
+              <p className="mt-1 text-sm text-slate-500">{t('workbench.web3.connectorsSubtitle')}</p>
             </div>
             <Button
               type="button"
               className="rounded-full border border-[#d6dff8] bg-[#eef2fb] px-4 py-2 text-sm font-medium text-[#0f4cc8]"
             >
-              全部
+              {t('common.all')}
             </Button>
           </div>
 
@@ -69,19 +69,19 @@ export function Web3Tab() {
             type="button"
             className="mt-4 text-sm font-semibold text-[#0f4cc8]"
           >
-            查看全部连接器
+            {t('workbench.web3.viewAllConnectors')}
           </Button>
         </div>
 
         <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <h3 className="text-lg font-semibold text-slate-900">策略 Skills</h3>
+              <h3 className="text-lg font-semibold text-slate-900">{t('workbench.web3.strategyTitle')}</h3>
               <span className="rounded-md bg-[#eef2fb] px-2 py-0.5 text-[11px] font-semibold text-[#0f4cc8]">
                 BETA
               </span>
             </div>
-            <span className="text-sm text-slate-400">可直接调用</span>
+            <span className="text-sm text-slate-400">{t('workbench.web3.strategyHint')}</span>
           </div>
 
           <div className="mt-5 space-y-3">

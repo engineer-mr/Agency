@@ -1,6 +1,7 @@
 import { Button } from '@base-ui/react/button'
 import { useState } from 'react'
 import { Sidebar } from '../../components/Sidebar' 
+import { useI18n } from '../../i18n'
 import Icon4 from '../../assets/plan/icon4.png'
 import Icon3 from '../../assets/plan/icon3.png'
 import Icon1 from '../../assets/plan/icon1.png'
@@ -62,6 +63,8 @@ function DotBullet() {
 }
 
 function PlanCard({ plan }: { plan: Plan }) {
+  const { t } = useI18n()
+
   return (
     <section className={`rounded-[28px] border bg-white px-5 py-5 shadow-sm ${plan.borderClass}`}>
       <div className="flex items-start justify-between gap-4">
@@ -108,7 +111,7 @@ function PlanCard({ plan }: { plan: Plan }) {
               className="mt-2 flex h-11 w-full items-center justify-between rounded-2xl border border-[#bf90ff] px-4 text-sm font-semibold text-[#7c5cff] transition hover:bg-[#faf5ff]"
             >
               <span>
-                {plan.ctaSecondary.leftPrice} <span className="font-medium line-through decoration-slate-400 decoration-1">{plan.ctaSecondary.leftOriginal}</span> /月
+                {plan.ctaSecondary.leftPrice} <span className="font-medium line-through decoration-slate-400 decoration-1">{plan.ctaSecondary.leftOriginal}</span> {t('planPage.plans.basic.monthlySuffix')}
               </span>
               <span>{plan.ctaSecondary.rightLabel}</span>
             </Button>
@@ -154,108 +157,90 @@ function PlanCard({ plan }: { plan: Plan }) {
         </div>
       </div>
 
-      <p className="mt-6 text-center text-sm text-slate-400">包含所有 {plan.name} 用户权益</p>
+      <p className="mt-6 text-center text-sm text-slate-400">{t('planPage.planContain', { name: plan.name })}</p>
     </section>
   )
 }
 
-const plans: Plan[] = [
+function createPlans(t: (key: string, vars?: Record<string, string | number>) => string): Plan[] {
+  return [
   {
-    name: 'Basic',
+    name: t('planPage.plans.basic.name'),
     tone: 'violet',
     priceMode: 'standard',
-    primaryPrice: '16.67',
-    monthlyOriginal: '$24.99',
-    monthlyOriginalSuffix: '/月',
-    annualPrice: '$199.99',
-    annualOriginal: '$299.88',
-    annualNote: '/年，按年计费',
-    discount: '低至67折，立省 $99.89',
-    description: '探索AI生产力工具的理想起点，覆盖高频使用场景',
-    monthlyPoints: '12,500 积分/月',
-    badge: '67折',
+    primaryPrice: t('planPage.plans.basic.monthlyPrice'),
+    monthlyOriginal: t('planPage.plans.basic.monthlyOriginal'),
+    monthlyOriginalSuffix: t('planPage.plans.basic.monthlySuffix'),
+    annualPrice: t('planPage.plans.basic.annualPrice'),
+    annualOriginal: t('planPage.plans.basic.annualOriginal'),
+    annualNote: t('planPage.plans.basic.annualNote'),
+    discount: t('planPage.plans.basic.discount'),
+    description: t('planPage.plans.basic.description'),
+    monthlyPoints: t('planPage.plans.basic.monthlyPoints'),
+    badge: t('planPage.plans.basic.badge'),
     ctaType: 'outline',
-    ctaLabel: '立即升级',
+    ctaLabel: t('planPage.plans.basic.upgrade'),
     borderClass: 'border-slate-200',
     accentClass: 'border-[#b9a7ff] text-[#7c5cff] hover:bg-[#f8f4ff]',
     titleClass: 'text-slate-900',
-    sectionTitle: '核心 AI 功能',
-    perks: [
-      '120积分/日，登录赠礼',
-      '共享SkyClaw智能助手',
-      '3台设备同时在线',
-      '50GB 知识库容量',
-      'AI 搜索增强（含联网实时搜索）',
-      'AI 编辑能力（文档/PPT/图片/网页/视频）',
-    ],
+    sectionTitle: t('planPage.plans.basic.sections.main'),
+    perks: [0, 1, 2, 3, 4, 5].map((index) => t(`planPage.plans.basic.features.${index}`)),
   },
   {
-    name: 'Plus',
+    name: t('planPage.plans.plus.name'),
     tone: 'purple',
     priceMode: 'trial',
-    primaryPrice: '1',
-    primaryNote: '试用7天',
-    annualPrice: '$399.90',
-    annualOriginal: '$599.88',
-    annualNote: '/年，按年计费',
-    discount: '低至67折，立省 $199.98',
-    description: '专业用户首选，Beta功能抢先体验，顶级模型优先访问',
-    monthlyPoints: '800积分/日，订阅后 28,000积分/月',
-    badge: '67折',
+    primaryPrice: t('planPage.plans.plus.trialPrice'),
+    primaryNote: t('planPage.plans.plus.trialNote'),
+    annualPrice: t('planPage.plans.plus.annualPrice'),
+    annualOriginal: t('planPage.plans.plus.annualOriginal'),
+    annualNote: t('planPage.plans.plus.annualNote'),
+    discount: t('planPage.plans.plus.discount'),
+    description: t('planPage.plans.plus.description'),
+    monthlyPoints: t('planPage.plans.plus.monthlyPoints'),
+    badge: t('planPage.plans.plus.badge'),
     ctaType: 'trial',
-    ctaLabel: '$1 开始7日试用',
+    ctaLabel: t('planPage.plans.plus.trialCta'),
     ctaSecondary: {
-      leftPrice: '$33.32',
-      leftOriginal: '$49.99',
-      rightLabel: '立即升级',
+      leftPrice: t('planPage.plans.plus.secondaryPrice'),
+      leftOriginal: t('planPage.plans.plus.secondaryOriginal'),
+      rightLabel: t('planPage.plans.plus.upgrade'),
     },
     borderClass: 'border-[#d9b8ff] bg-[linear-gradient(180deg,rgba(245,235,255,0.55)_0%,rgba(255,255,255,1)_72%)]',
     accentClass: 'border-[#b76bff] bg-[linear-gradient(180deg,#c67cff_0%,#a95cff_100%)] text-white shadow-[0_8px_24px_rgba(169,92,255,0.32)] hover:brightness-95',
     titleClass: 'text-slate-900',
-    sectionTitle: '核心 AI 功能',
-    perks: [
-      '专属自定义 7*24小时在线 SkyClaw 智能助手',
-      '优先使用顶级 AI 模型（优先队列）',
-      '自选顶级模型（Claude, ChatGPT, Gemini, DeepSeek, Kimi）',
-      'Beta 功能抢先体验',
-      '4台设备同时在线',
-      '1T 知识库容量',
-    ],
+    sectionTitle: t('planPage.plans.plus.sections.main'),
+    perks: [0, 1, 2, 3, 4, 5].map((index) => t(`planPage.plans.plus.features.${index}`)),
   },
   {
-    name: 'Ultra',
+    name: t('planPage.plans.ultra.name'),
     tone: 'orange',
     priceMode: 'standard',
-    primaryPrice: '166.66',
-    monthlyOriginal: '$249.99',
-    monthlyOriginalSuffix: '/月',
-    annualPrice: '$1,999.90',
-    annualOriginal: '$2,999.88',
-    annualNote: '/年，按年计费',
-    discount: '低至67折，立省 $999.98',
-    description: '每日一杯拿铁的价格，拥有私有化 AI Agent 顶级体验与速度',
-    monthlyPoints: '150,000 积分/月',
-    badge: '67折',
+    primaryPrice: t('planPage.plans.ultra.monthlyPrice'),
+    monthlyOriginal: t('planPage.plans.ultra.monthlyOriginal'),
+    monthlyOriginalSuffix: t('planPage.plans.ultra.monthlySuffix'),
+    annualPrice: t('planPage.plans.ultra.annualPrice'),
+    annualOriginal: t('planPage.plans.ultra.annualOriginal'),
+    annualNote: t('planPage.plans.ultra.annualNote'),
+    discount: t('planPage.plans.ultra.discount'),
+    description: t('planPage.plans.ultra.description'),
+    monthlyPoints: t('planPage.plans.ultra.monthlyPoints'),
+    badge: t('planPage.plans.ultra.badge'),
     ctaType: 'outline',
-    ctaLabel: '立即升级',
+    ctaLabel: t('planPage.plans.ultra.upgrade'),
     borderClass: 'border-[#ffd79c] bg-[linear-gradient(180deg,rgba(255,248,235,0.65)_0%,rgba(255,255,255,1)_72%)]',
     accentClass: 'border-[#ffb24b] text-[#ff9a1f] hover:bg-[#fff5e5]',
     titleClass: 'text-slate-900',
-    sectionTitle: '核心 AI 功能',
-    perks: [
-      '120积分/日，登录赠礼',
-      '专属自定义 7*24小时在线 SkyClaw 智能助手',
-      '不限速使用顶级 AI 模型（专属通道）',
-      '自选顶级模型（Claude, ChatGPT, Gemini, DeepSeek, Kimi）',
-      '全量 Beta 功能首批解锁',
-      '8台设备同时在线',
-      '3T 知识库容量',
-    ],
+    sectionTitle: t('planPage.plans.ultra.sections.main'),
+    perks: [0, 1, 2, 3, 4, 5, 6].map((index) => t(`planPage.plans.ultra.features.${index}`)),
   },
 ]
+}
 
 export default function PlanPage() {
+  const { t } = useI18n()
   const [billing, setBilling] = useState<'monthly' | 'yearly'>('monthly')
+  const plans = createPlans(t)
 
   return (
     <div className="flex min-h-screen bg-white text-slate-900">
@@ -265,9 +250,9 @@ export default function PlanPage() {
         <section className="mx-auto w-full max-w-[1280px]">
           <div className="flex flex-col items-center">
             <p className="text-sm font-semibold text-slate-900 flex items-centers">
-              选择想要订阅的会员 或 
+              {t('planPage.eyebrow')}
                <img src={Icon4} className='w-[20px] h-[20px] mx-1' alt="" />
-              <span className="text-[#ff9a1f]">购买积分</span>
+              <span className="text-[#ff9a1f]">{t('planPage.coin')}</span>
             </p>
 
             <div className="mt-4 flex w-[380px] items-center rounded-2xl border border-slate-200 bg-white p-1 shadow-sm">
@@ -278,7 +263,7 @@ export default function PlanPage() {
                   billing === 'monthly' ? 'bg-[#eef1f6] text-slate-900' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                每月
+                {t('planPage.monthly')}
               </button>
               <button
                 type="button"
@@ -287,15 +272,15 @@ export default function PlanPage() {
                   billing === 'yearly' ? 'bg-[#eef1f6] text-slate-900' : 'text-slate-500 hover:text-slate-900'
                 }`}
               >
-                每年 <span className="rounded-md bg-[#31b089] px-1.5 py-0.5 text-[10px] font-semibold text-white">64折</span>
+                {t('planPage.yearly')} <span className="rounded-md bg-[#31b089] px-1.5 py-0.5 text-[10px] font-semibold text-white">{t('planPage.yearlyBadge')}</span>
               </button>
             </div>
 
             <div className="mt-8 flex w-full items-center justify-center gap-4 text-sm text-slate-500">
-              <span>支付方式:</span>
+              <span>{t('planPage.paymentMethod')}</span>
               <button type="button" className="flex items-center gap-2 font-semibold text-slate-800">
                 <span className="inline-flex h-4 w-4 items-center justify-center rounded-sm bg-slate-900 text-[10px] text-white">▣</span>
-                信用卡 / 银行卡 <ChevronRightIcon />
+                {t('planPage.cardOrBank')} <ChevronRightIcon />
               </button>
             </div>
 
@@ -307,8 +292,8 @@ export default function PlanPage() {
 
             <section className="mt-12 flex w-full items-center justify-between rounded-[28px] border border-slate-200 bg-white px-8 py-8 shadow-sm">
               <div>
-                <p className="text-lg font-semibold text-slate-900">安全与合规</p>
-                <p className="mt-2 text-sm text-slate-500">信任中心</p>
+                <p className="text-lg font-semibold text-slate-900">{t('planPage.safetyTitle')}</p>
+                <p className="mt-2 text-sm text-slate-500">{t('planPage.safetySubtitle')}</p>
               </div>
               <div className="flex items-center gap-8 text-center">
                 <div className="text-xs text-[#333B46]"> 
@@ -325,13 +310,13 @@ export default function PlanPage() {
                 </div>
               </div>
               <Button type="button" className="rounded-2xl border flex items-center border-slate-200 px-4 py-3 text-sm font-semibold text-[#7c5cff]">
-                了解更多 <ChevronRightIcon />
+                {t('planPage.learnMore')} <ChevronRightIcon />
               </Button>
             </section>
 
             <Button type="button" className="mt-10 text-base font-semibold text-[#7c5cff] flex items-center">
               <img src={Icon3} className='w-[20px] h-[20px] mr-2' alt="" />
-              使用优惠码，立享折扣
+              {t('planPage.promo')}
             </Button>
           </div>
         </section>

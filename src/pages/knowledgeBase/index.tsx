@@ -2,37 +2,22 @@ import { useState } from 'react'
 import { Button } from '@base-ui/react/button'
 import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '../../components/Sidebar'
+import { useI18n } from '../../i18n'
 
 type ViewKey = 'recent' | 'mine' | 'team' | 'shared'
 type RowKind = 'folder' | 'doc' | 'img' | 'pdf' | 'page' | 'sheet'
 
 const topTabs: Array<{ key: ViewKey; label: string }> = [
-  { key: 'recent', label: '最近' },
-  { key: 'mine', label: '我的资料' },
-  { key: 'team', label: '团队资料' },
-  { key: 'shared', label: '与我共享' },
+  { key: 'recent', label: 'knowledgeBase.recent' },
+  { key: 'mine', label: 'knowledgeBase.mine' },
+  { key: 'team', label: 'knowledgeBase.team' },
+  { key: 'shared', label: 'knowledgeBase.shared' },
 ]
 
-const recentFilters = ['最近访问', '我分享的', '与我共享'] as const
-const myFilters = ['全部', '文档', '网页', '数据库'] as const
+const recentFilterKeys = ['knowledgeBase.recentVisit', 'knowledgeBase.myShared', 'knowledgeBase.sharedWithMe'] as const
+const myFilterKeys = ['knowledgeBase.all', 'knowledgeBase.doc', 'knowledgeBase.web', 'knowledgeBase.db'] as const
 
-const recentRows: Array<{ name: string; owner: string; location: string; recent: string; icon: RowKind }> = [
-  { name: '🤓🚗和 Agent 一起用资料库...', owner: 'vickymzzhou', location: '团队空间', recent: '12分钟前', icon: 'folder' },
-  { name: '🤓🚗和 Agent 一起用资料库...', owner: 'vickymzzhou', location: '团队空间', recent: '12分钟前', icon: 'doc' },
-  { name: '背景', owner: 'vickymzzhou', location: '我的资料', recent: '40分钟前', icon: 'img' },
-  { name: '💗使用资料库搭建个人和团...', owner: 'vickymzzhou', location: '团队空间', recent: '40分钟前', icon: 'pdf' },
-  { name: '资料库新手教程', owner: 'vickymzzhou', location: '我的资料', recent: '40分钟前', icon: 'page' },
-  { name: '让人和 AI 在同一份文档里自...', owner: 'vickymzzhou', location: '我的资料', recent: '1小时前', icon: 'sheet' },
-] as const
-
-const libraryRows: Array<{ name: string; owner: string; location: string; recent: string; icon: RowKind }> = [
-  { name: '品牌手册', owner: 'vickymzzhou', location: '我的资料', recent: '12分钟前', icon: 'folder' },
-  { name: '产品发布说明', owner: 'vickymzzhou', location: '我的资料', recent: '12分钟前', icon: 'doc' },
-  { name: '视觉素材', owner: 'vickymzzhou', location: '我的资料', recent: '40分钟前', icon: 'img' },
-  { name: '团队协作指南', owner: 'vickymzzhou', location: '我的资料', recent: '40分钟前', icon: 'pdf' },
-  { name: '知识库新手教程', owner: 'vickymzzhou', location: '我的资料', recent: '40分钟前', icon: 'page' },
-  { name: '项目清单', owner: 'vickymzzhou', location: '我的资料', recent: '1小时前', icon: 'sheet' },
-] as const
+const rowIcons: RowKind[] = ['folder', 'doc', 'img', 'pdf', 'page', 'sheet']
 
 function SearchIcon() {
   return (
@@ -105,6 +90,8 @@ function TableFrame({
   activeFilter,
   onFilterChange,
   onRowClick,
+  browseByType,
+  headers,
 }: {
   title: string
   showUpload: boolean
@@ -115,6 +102,8 @@ function TableFrame({
   activeFilter: string
   onFilterChange: (value: string) => void
   onRowClick: (row: { name: string; owner: string; location: string; recent: string; icon: RowKind }) => void
+  browseByType: string
+  headers: { name: string; owner: string; location: string; recent: string }
 }) {
   return (
     <section className="space-y-4">
@@ -132,7 +121,7 @@ function TableFrame({
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <span className="text-sm text-slate-500">按类型浏览</span>
+        <span className="text-sm text-slate-500">{browseByType}</span>
         {filters.map((item) => {
           const active = item === activeFilter
           return (
@@ -156,10 +145,10 @@ function TableFrame({
         <table className="w-full table-fixed border-collapse">
           <thead>
             <tr className="border-b border-slate-200 text-left text-sm font-medium text-slate-500">
-              <th className="px-5 py-4">名称</th>
-              <th className="px-5 py-4">所有者</th>
-              <th className="px-5 py-4">位置</th>
-              <th className="px-5 py-4 text-right">最近访问</th>
+              <th className="px-5 py-4">{headers.name}</th>
+              <th className="px-5 py-4">{headers.owner}</th>
+              <th className="px-5 py-4">{headers.location}</th>
+              <th className="px-5 py-4 text-right">{headers.recent}</th>
             </tr>
           </thead>
           <tbody>
@@ -189,9 +178,33 @@ function TableFrame({
 
 export default function KnowledgeBasePage() {
   const navigate = useNavigate()
+  const { t } = useI18n()
   const [activeView, setActiveView] = useState<ViewKey>('recent')
-  const [recentFilter, setRecentFilter] = useState('最近访问')
-  const [libraryFilter, setLibraryFilter] = useState('全部')
+  const [recentFilter, setRecentFilter] = useState(t('knowledgeBase.recentVisit'))
+  const [libraryFilter, setLibraryFilter] = useState(t('knowledgeBase.all'))
+  const recentFilters = recentFilterKeys.map((key) => t(key))
+  const myFilters = myFilterKeys.map((key) => t(key))
+  const translatedTabs = topTabs.map((tab) => ({ ...tab, label: t(tab.label) }))
+  const headers = {
+    name: t('knowledgeBase.headers.name'),
+    owner: t('knowledgeBase.headers.owner'),
+    location: t('knowledgeBase.headers.location'),
+    recent: t('knowledgeBase.headers.recent'),
+  }
+  const recentRows = rowIcons.map((icon, index) => ({
+    name: t(`knowledgeBase.rows.${index}.name`),
+    owner: t(`knowledgeBase.rows.${index}.owner`),
+    location: t(`knowledgeBase.rows.${index}.location`),
+    recent: t(`knowledgeBase.rows.${index}.recent`),
+    icon,
+  }))
+  const libraryRows = rowIcons.map((icon, index) => ({
+    name: t(`knowledgeBase.libraryRows.${index}.name`),
+    owner: t(`knowledgeBase.libraryRows.${index}.owner`),
+    location: t(`knowledgeBase.libraryRows.${index}.location`),
+    recent: t(`knowledgeBase.libraryRows.${index}.recent`),
+    icon,
+  }))
 
   return (
     <div className="flex min-h-screen bg-white text-slate-900">
@@ -202,21 +215,21 @@ export default function KnowledgeBasePage() {
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="text-xs font-bold tracking-[0.3em] text-[#0f4cc8]">KNOWLEDGE BASE</p>
-              <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">知识库</h1>
+              <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">{t('knowledgeBase.title')}</h1>
             </div>
 
             <label className="flex h-11 w-[180px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-500 shadow-sm">
               <SearchIcon />
               <input
                 type="text"
-                placeholder="搜索项目"
+                placeholder={t('knowledgeBase.searchPlaceholder')}
                 className="w-full border-0 bg-transparent p-0 text-sm outline-none placeholder:text-slate-400"
               />
             </label>
           </div>
 
           <div className="mt-8 flex items-center gap-8 border-b border-slate-200 text-base font-medium text-slate-500">
-            {topTabs.map((tab) => {
+            {translatedTabs.map((tab) => {
               const active = tab.key === activeView
               return (
                 <Button
@@ -239,15 +252,15 @@ export default function KnowledgeBasePage() {
             {activeView === 'recent' ? (
               <section className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-semibold tracking-tight text-slate-900">最近访问</h2>
+                  <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{t('knowledgeBase.recentVisit')}</h2>
                   <button type="button" className="flex items-center gap-1 text-sm text-slate-500">
-                    全部类型
+                    {t('knowledgeBase.allType')}
                     <ChevronDownIcon />
                   </button>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="text-sm text-slate-500">按类型浏览</span>
+                  <span className="text-sm text-slate-500">{t('knowledgeBase.browseByType')}</span>
                   {recentFilters.map((item) => {
                     const active = item === recentFilter
                     return (
@@ -271,10 +284,10 @@ export default function KnowledgeBasePage() {
                   <table className="w-full table-fixed border-collapse">
                     <thead>
                       <tr className="border-b border-slate-200 text-left text-sm font-medium text-slate-500">
-                        <th className="px-5 py-4">名称</th>
-                        <th className="px-5 py-4">所有者</th>
-                        <th className="px-5 py-4">位置</th>
-                        <th className="px-5 py-4 text-right">最近访问</th>
+                        <th className="px-5 py-4">{headers.name}</th>
+                        <th className="px-5 py-4">{headers.owner}</th>
+                        <th className="px-5 py-4">{headers.location}</th>
+                        <th className="px-5 py-4 text-right">{headers.recent}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -301,15 +314,17 @@ export default function KnowledgeBasePage() {
               </section>
             ) : (
               <TableFrame
-                title={topTabs.find((tab) => tab.key === activeView)?.label ?? '我的资料'}
+                title={translatedTabs.find((tab) => tab.key === activeView)?.label ?? t('knowledgeBase.mine')}
                 showUpload
-                actionLabel={activeView === 'mine' ? '上传文件' : '新建空间'}
+                actionLabel={activeView === 'mine' ? t('knowledgeBase.uploadFile') : t('knowledgeBase.newSpace')}
                 actionIcon={activeView === 'mine' ? 'upload' : 'plus'}
                 filters={myFilters}
                 rows={libraryRows}
                 activeFilter={libraryFilter}
                 onFilterChange={setLibraryFilter}
                 onRowClick={(row) => navigate('/knowledge-base/detail', { state: { item: row } })}
+                browseByType={t('knowledgeBase.browseByType')}
+                headers={headers}
               />
             )}
           </div>

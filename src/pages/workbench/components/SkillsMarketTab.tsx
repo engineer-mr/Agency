@@ -6,20 +6,20 @@ import { createWorkbenchData } from './workbench-data'
 export function SkillsMarketTab() {
   const { t } = useI18n()
   const { skillsMarketItems } = createWorkbenchData(t)
-  const chips = ['全部', 'CEX', 'DEX', '策略工具']
+  const chips = [0, 1, 2, 3].map((index) => t(`workbench.skillsMarket.filters.${index}`))
 
   return (
     <div className="space-y-6">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-slate-900">技能广场</h2>
-          <p className="mt-2 text-sm text-slate-500">从 Hummingbot 连接器体系提炼的 Web3 可视化 Skills</p>
+          <h2 className="text-2xl font-semibold text-slate-900">{t('workbench.skillsMarket.title')}</h2>
+          <p className="mt-2 text-sm text-slate-500">{t('workbench.skillsMarket.subtitle')}</p>
         </div>
-        <div className="text-sm text-slate-500">50+ 连接器 · 18 个精选 Skills</div>
+        <div className="text-sm text-slate-500">{t('workbench.skillsMarket.summary')}</div>
       </div>
 
       <div className="flex items-center gap-3">
-        <span className="text-sm text-slate-500">按类型浏览</span>
+        <span className="text-sm text-slate-500">{t('knowledgeBase.browseByType')}</span>
         {chips.map((chip, index) => (
           <Button
             key={chip}

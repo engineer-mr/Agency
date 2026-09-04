@@ -3,6 +3,7 @@ import { Dialog } from '@base-ui/react/dialog'
 import { Popover } from '@base-ui/react/popover'
 import { useState } from 'react'
 import { Sidebar } from '../../components/Sidebar'
+import { useI18n } from '../../i18n'
 
 function SearchIcon() {
   return (
@@ -76,16 +77,12 @@ function ProjectCard({
   )
 }
 
-const projectItems = [
-  { title: 'logo海报制作', desc: '海报制作 · 刚刚', badge: 'POSTER', tone: 'dark' as const, status: '草稿' },
-  { title: 'Velora 品牌官网', desc: '网站制作 · 昨天', badge: 'S', tone: 'light' as const, status: '' },
-] as const
-
-const templateItems = [
-  { title: '品牌发布全流程', desc: '从策略、内容到上线交付', color: 'bg-[#eff3fb] text-[#0f4cc8]' },
-  { title: '活动营销项目', desc: '活动策划、海报和推广内容', color: 'bg-[#fef0e6] text-[#f28a4b]' },
-  { title: '团队知识沉淀', desc: '持续整理 SOP、经验和 FAQ', color: 'bg-[#f3ecff] text-[#8c6ade]' },
-  { title: '项目交付管理', desc: '管理需求、计划、风险和周报', color: 'bg-[#f9f0d1] text-[#b89b22]' },
+const projectTones = ['dark', 'light'] as const
+const templateColors = [
+  'bg-[#eff3fb] text-[#0f4cc8]',
+  'bg-[#fef0e6] text-[#f28a4b]',
+  'bg-[#f3ecff] text-[#8c6ade]',
+  'bg-[#f9f0d1] text-[#b89b22]',
 ] as const
 
 function CreateProjectDialog({
@@ -95,6 +92,8 @@ function CreateProjectDialog({
   open: boolean
   onOpenChange: (open: boolean) => void
 }) {
+  const { t } = useI18n()
+
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange} modal>
       <Dialog.Portal>
@@ -104,7 +103,7 @@ function CreateProjectDialog({
           initialFocus={false}
         >
           <div className="flex items-center justify-between">
-            <Dialog.Title className="text-base font-semibold text-slate-900">新建项目</Dialog.Title>
+            <Dialog.Title className="text-base font-semibold text-slate-900">{t('project.createDialog.title')}</Dialog.Title>
             <Dialog.Close className="flex h-7 w-7 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-700">
               <CloseIcon />
             </Dialog.Close>
@@ -113,21 +112,21 @@ function CreateProjectDialog({
           <div className="mt-4 space-y-4">
             <div>
               <div className="mb-2 flex items-center justify-between text-sm">
-                <label className="font-medium text-slate-900">项目名称</label>
+                <label className="font-medium text-slate-900">{t('project.createDialog.name')}</label>
                 <span className="text-slate-400">0/15</span>
               </div>
               <input
                 type="text"
-                placeholder="请输入项目名称"
+                placeholder={t('project.createDialog.namePlaceholder')}
                 className="h-10 w-full rounded-lg border border-slate-200 px-3 text-sm outline-none placeholder:text-slate-300 focus:border-[#0f4cc8]"
               />
             </div>
 
             <div>
               <div className="mb-2 flex items-center justify-between text-sm">
-                <label className="font-medium text-slate-900">指令</label>
+                <label className="font-medium text-slate-900">{t('project.createDialog.instruction')}</label>
                 <Button type="button" className="h-7 rounded-full bg-slate-100 px-3 text-xs text-slate-500 flex items-center justify-center">
-                  选择模板 
+                  {t('project.createDialog.template')}
                   <svg className='ml-2' xmlns="http://www.w3.org/2000/svg" width="9" height="6" viewBox="0 0 9 6" fill="none">
   <path d="M4.50053 3.00053L1.49982 -8.94387e-08L5.36651e-08 1.49974L4.49947 6L9 1.49974L7.50018 -1.78852e-08L4.49947 3.00053L4.50053 3.00053Z" fill="#68717D"/>
 </svg>
@@ -135,14 +134,14 @@ function CreateProjectDialog({
               </div>
               <textarea
                 className="h-24 w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-sm leading-6 outline-none placeholder:text-slate-300 focus:border-[#0f4cc8]"
-                placeholder="提供当前项目的背景信息和规范，让 WorkBuddy 的回复更精准，更符合要求。比如：项目目标、团队习惯、风格偏好、输出约束等"
+                placeholder={t('project.instructionPlaceholder')}
               />
             </div>
 
             {[
-              { label: '连接器（可选）' },
-              { label: '专家（可选）' },
-              { label: '技能（可选）' },
+              { label: t('project.createDialog.connectors') },
+              { label: t('project.createDialog.experts') },
+              { label: t('project.createDialog.skills') },
             ].map((item) => (
               <div
                 key={item.label}
@@ -151,12 +150,12 @@ function CreateProjectDialog({
                 <span className="font-medium text-slate-900">{item.label}</span>
                 <button type="button" className="flex items-center gap-1 text-slate-500">
                   <PlusIcon />
-                  添加
+                  {t('project.createDialog.add')}
                 </button>
               </div>
             ))}
 
-            <p className="text-xs text-slate-400">切换模板后会覆盖当前编辑内容</p>
+            <p className="text-xs text-slate-400">{t('project.createDialog.warning')}</p>
 
             <div className="grid grid-cols-2 gap-3 pt-1">
               <Button
@@ -164,14 +163,14 @@ function CreateProjectDialog({
                 onClick={() => onOpenChange(false)}
                 className="h-10 rounded-xl bg-slate-100 text-sm font-medium text-slate-600"
               >
-                取消
+                {t('common.cancel')}
               </Button>
               <Button
                 type="button"
                 onClick={() => onOpenChange(false)}
                 className="h-10 rounded-xl bg-[#0f4cc8] text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]"
               >
-                确定
+                {t('common.confirm')}
               </Button>
             </div>
           </div>
@@ -190,13 +189,8 @@ function TemplateSelectionDialog({
   onOpenChange: (open: boolean) => void
   title: string
 }) {
-  const options = [
-    '可灵',
-    '可灵',
-    '可灵',
-    '可灵',
-    '可灵',
-  ]
+  const { t } = useI18n()
+  const options = Array.from({ length: 5 }, () => t('project.templateDialog.optionName'))
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange} modal>
@@ -207,16 +201,16 @@ function TemplateSelectionDialog({
           initialFocus={false}
         >
           <div className="flex items-center justify-between">
-            <Dialog.Title className="text-base font-semibold text-slate-900">添加个人授权连接器</Dialog.Title>
+            <Dialog.Title className="text-base font-semibold text-slate-900">{t('project.templateDialog.title')}</Dialog.Title>
             <Dialog.Close className="flex h-7 w-7 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-700">
               <CloseIcon />
             </Dialog.Close>
           </div>
 
           <p className="mt-2 rounded-md border border-[#0f4cc8] px-3 py-2 text-sm text-slate-500">
-            添加后可供当前项目使用个人账号授权连接。如果配置公共连接器，可在创建项目完成后再配置。
+            {t('project.templateDialog.body')}
           </p>
-          <p className="mt-2 text-xs text-slate-400">当前模板：{title}</p>
+          <p className="mt-2 text-xs text-slate-400">{t('project.templateDialog.currentTemplate', { title })}</p>
 
           <div className="mt-4 space-y-2">
             {options.map((option, index) => (
@@ -234,7 +228,7 @@ function TemplateSelectionDialog({
                   <span className="min-w-0">
                     <span className="block text-sm font-semibold text-slate-900">{option}</span>
                     <span className="block truncate text-xs text-slate-500">
-                      一句话，让灵感从想法变成大片。可灵（Kling / Kling AI / 可灵AI）
+                      {t('project.templateDialog.optionDesc')}
                     </span>
                   </span>
                 </span>
@@ -255,7 +249,7 @@ function TemplateSelectionDialog({
               onClick={() => onOpenChange(false)}
               className="h-10 w-full rounded-xl bg-[#0f4cc8] text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]"
             >
-              完成
+              {t('project.templateDialog.complete')}
             </Button>
           </div>
         </Dialog.Popup>
@@ -296,10 +290,23 @@ function TemplateCard({
 }
 
 export default function ProjectPage() {
+  const { t } = useI18n()
+  const projectItems = projectTones.map((tone, index) => ({
+    title: t(`project.projectItems.${index}.title`),
+    desc: t(`project.projectItems.${index}.desc`),
+    badge: t(`project.projectItems.${index}.badge`),
+    tone,
+    status: t(`project.projectItems.${index}.status`),
+  }))
+  const templateItems = templateColors.map((color, index) => ({
+    title: t(`project.templateItems.${index}.title`),
+    desc: t(`project.templateItems.${index}.desc`),
+    color,
+  }))
   const [menuOpen, setMenuOpen] = useState(false)
   const [createProjectOpen, setCreateProjectOpen] = useState(false)
   const [templateDialogOpen, setTemplateDialogOpen] = useState(false)
-  const [activeTemplate, setActiveTemplate] = useState<string>(templateItems[0].title)
+  const [activeTemplate, setActiveTemplate] = useState<string>(t('project.templateItems.0.title'))
 
   return (
     <div className="flex min-h-screen bg-white text-slate-900">
@@ -316,8 +323,8 @@ export default function ProjectPage() {
           <div className="flex items-start justify-between gap-6">
             <div>
               <p className="text-xs font-bold tracking-[0.3em] text-[#0f4cc8]">PROJECT SPACE</p>
-              <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">项目</h1>
-              <p className="mt-4 text-sm text-slate-500">多人协同，把想法变成可以交付的成果</p>
+              <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">{t('project.title')}</h1>
+              <p className="mt-4 text-sm text-slate-500">{t('project.subtitle')}</p>
             </div>
 
             <Button
@@ -331,19 +338,19 @@ export default function ProjectPage() {
           <div className="mt-8 rounded-2xl border border-slate-100 bg-[#eef3ff] px-6 py-6 shadow-sm">
             <div className="flex items-start justify-between gap-8">
               <div className="max-w-[620px]">
-                <p className="text-xs font-bold tracking-[0.26em] text-[#0f4cc8]">PROJECT TIP</p>
+                <p className="text-xs font-bold tracking-[0.26em] text-[#0f4cc8]">{t('project.tipTag')}</p>
                 <h2 className="mt-4 text-[28px] font-semibold tracking-tight text-slate-900">
-                  让每个项目，都有清晰的下一步
+                  {t('project.tipTitle')}
                 </h2>
                 <p className="mt-3 text-sm leading-7 text-slate-600">
-                  从模板或 Skill 开始，团队可以在同一个空间里持续协作和交付。
+                  {t('project.tipBody')}
                 </p>
                 <Button
                   type="button"
                   onClick={() => setCreateProjectOpen(true)}
                   className="mt-5 rounded-xl bg-[#0f4cc8] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]"
                 >
-                  创建新项目
+                  {t('project.createProject')}
                 </Button>
               </div>
 
@@ -369,15 +376,15 @@ export default function ProjectPage() {
 
           <div className="mt-8 flex items-center justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">我的项目</h2>
-              <p className="mt-2 text-sm text-slate-500">管理和继续处理你的创作</p>
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{t('project.myProjectsTitle')}</h2>
+              <p className="mt-2 text-sm text-slate-500">{t('project.myProjectsSubtitle')}</p>
             </div>
 
             <label className="flex h-11 w-[180px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-500 shadow-sm">
               <SearchIcon />
               <input
                 type="text"
-                placeholder="搜索项目"
+                placeholder={t('project.searchPlaceholder')}
                 className="w-full border-0 bg-transparent p-0 text-sm outline-none placeholder:text-slate-400"
               />
             </label>
@@ -398,7 +405,7 @@ export default function ProjectPage() {
                         <button
                           type="button"
                           className="absolute right-4 top-16 h-9 w-9 rounded-full text-slate-400 transition hover:bg-slate-50 hover:text-slate-700"
-                          aria-label="项目更多操作"
+                          aria-label={t('project.moreActions')}
                         >
                           ⋯
                         </button>
@@ -407,7 +414,12 @@ export default function ProjectPage() {
                     <Popover.Portal>
                       <Popover.Positioner side="bottom" align="end" sideOffset={10} alignOffset={0}>
                         <Popover.Popup className="w-[124px] rounded-2xl border border-slate-200 bg-white p-2 shadow-[0_16px_40px_rgba(15,23,42,0.12)] outline-none">
-                          {['置顶', '分享', '重命名', '删除'].map((menuItem, menuIndex) => (
+                          {[
+                            t('project.menuItems.top'),
+                            t('project.menuItems.share'),
+                            t('project.menuItems.rename'),
+                            t('project.menuItems.delete'),
+                          ].map((menuItem, menuIndex) => (
                             <button
                               key={menuItem}
                               type="button"
@@ -433,15 +445,15 @@ export default function ProjectPage() {
 
           <div className="mt-10 flex items-center justify-between gap-4">
             <div>
-              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">从模板创建</h2>
-              <p className="mt-2 text-sm text-slate-500">选择一个常用工作流，快速开始项目</p>
+              <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{t('project.templatesTitle')}</h2>
+              <p className="mt-2 text-sm text-slate-500">{t('project.templatesSubtitle')}</p>
             </div>
 
             <label className="flex h-11 w-[180px] items-center gap-2 rounded-xl border border-slate-200 bg-white px-3 text-sm text-slate-500 shadow-sm">
               <SearchIcon />
               <input
                 type="text"
-                placeholder="搜索项目"
+                placeholder={t('project.searchPlaceholder')}
                 className="w-full border-0 bg-transparent p-0 text-sm outline-none placeholder:text-slate-400"
               />
             </label>

@@ -1,4 +1,5 @@
 import { Button } from '@base-ui/react/button'
+import { useI18n } from '../../../i18n'
 
 export function SkillCard({
   title,
@@ -15,6 +16,8 @@ export function SkillCard({
   tag?: string
   onUseSkill?: () => void
 }) {
+  const { t } = useI18n()
+
   return (
     <div className="flex min-h-[236px] flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
       <div className="flex items-start justify-between gap-3">
@@ -34,7 +37,7 @@ export function SkillCard({
       <div className="mt-auto flex items-center justify-between border-t border-slate-200 pt-4">
         <span className="text-sm text-slate-300">{meta}</span>
         <Button type="button" onClick={onUseSkill} className="text-sm font-semibold text-[#0f4cc8]">
-          使用 Skill
+          {t('workbench.useSkill')}
         </Button>
       </div>
     </div>

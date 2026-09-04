@@ -2,8 +2,7 @@ import { useMemo, useState } from 'react'
 import { Button } from '@base-ui/react/button'
 import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '../../../components/Sidebar'
-
-const tabs = ['服装海报', '素材贴合', '海报陈列', '艺术设计'] as const
+import { useI18n } from '../../../i18n'
 
 function BackIcon() {
   return (
@@ -31,15 +30,17 @@ function SparkIcon() {
 
 export default function PosterSkillPage() {
   const navigate = useNavigate()
-  const [activeTab, setActiveTab] = useState<(typeof tabs)[number]>('服装海报')
+  const { t } = useI18n()
+  const [activeTab, setActiveTab] = useState(0)
+  const tabs = [0, 1, 2, 3].map((index) => t(`posterSkill.tabs.${index}`))
 
   const previewMeta = useMemo(
     () => [
-      { label: '模型', value: 'ChatGPT 5.6 Sol' },
-      { label: '比例', value: '自适应' },
-      { label: '分辨率', value: '1k 标清' },
+      { label: t('posterSkill.settings.model'), value: 'ChatGPT 5.6 Sol' },
+      { label: t('posterSkill.settings.ratio'), value: t('posterSkill.settings.auto') },
+      { label: t('posterSkill.settings.resolution'), value: t('posterSkill.settings.standard') },
     ],
-    [],
+    [t],
   )
 
   const handleBack = () => {
@@ -60,17 +61,17 @@ export default function PosterSkillPage() {
             >
               <BackIcon />
             </Button>
-            <h1 className="text-2xl font-semibold tracking-tight text-slate-900">海报制作</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-slate-900">{t('posterSkill.title')}</h1>
           </div>
 
           <div className="mt-6 flex flex-wrap items-center gap-5 border-b border-slate-200 text-base font-medium text-slate-500">
-            {tabs.map((tab) => {
-              const active = tab === activeTab
+            {tabs.map((tab, index) => {
+              const active = index === activeTab
               return (
                 <Button
                   key={tab}
                   type="button"
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => setActiveTab(index)}
                   className={`relative -mb-px border-b-2 px-0 py-3 text-base font-medium transition ${
                     active
                       ? 'border-[#0f4cc8] text-slate-900'
@@ -86,7 +87,7 @@ export default function PosterSkillPage() {
           <div className="mt-6 grid grid-cols-1 gap-6 xl:grid-cols-[1.08fr_0.92fr]">
             <div className="space-y-4">
               <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">1. 模型 · 用户可选</p>
+                <p className="text-sm font-semibold text-slate-900">{t('posterSkill.sections.model')}</p>
                 <button
                   type="button"
                   className="mt-3 flex w-full items-center justify-between rounded-2xl bg-[#f4f6fb] px-4 py-3 text-left text-sm text-slate-700 transition hover:bg-[#eef2fb]"
@@ -103,9 +104,9 @@ export default function PosterSkillPage() {
 
               <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold text-slate-900">2. 产品图 · 可选</p>
+                  <p className="text-sm font-semibold text-slate-900">{t('posterSkill.sections.product')}</p>
                   <Button type="button" className="text-sm text-slate-500">
-                    从知识库选择
+                    {t('posterSkill.chooseFromKnowledge')}
                   </Button>
                 </div>
                 <div className="mt-3 flex min-h-[220px] items-center justify-center rounded-2xl bg-[#f5f7fc] px-4 py-8 text-center">
@@ -124,14 +125,14 @@ export default function PosterSkillPage() {
                         <circle cx="9" cy="8.5" r="1.2" fill="currentColor" stroke="none" />
                       </svg>
                     </div>
-                    <p className="mt-4 text-sm font-medium text-slate-900">上传你的产品图</p>
-                    <p className="mt-2 text-xs text-slate-500">放进设计 / 海报；留空则纯文字生成</p>
+                    <p className="mt-4 text-sm font-medium text-slate-900">{t('posterSkill.uploadTitle')}</p>
+                    <p className="mt-2 text-xs text-slate-500">{t('posterSkill.uploadDesc')}</p>
                   </div>
                 </div>
               </section>
 
               <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">3. 生产设置</p>
+                <p className="text-sm font-semibold text-slate-900">{t('posterSkill.sections.production')}</p>
                 <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2">
                   {previewMeta.slice(1).map((item) => (
                     <button
@@ -150,11 +151,11 @@ export default function PosterSkillPage() {
               </section>
 
               <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
-                <p className="text-sm font-semibold text-slate-900">4. 设计灵感</p>
+                <p className="text-sm font-semibold text-slate-900">{t('posterSkill.sections.inspiration')}</p>
                 <div className="mt-3 rounded-2xl bg-[#f4f6fb] px-4 py-4">
                   <textarea
                     className="h-16 w-full resize-none border-0 bg-transparent text-sm text-slate-700 outline-none placeholder:text-slate-400"
-                    placeholder="例如：法式复古碎花连衣裙，灯笼袖，收腰显瘦，茶歇领"
+                    placeholder={t('posterSkill.promptPlaceholder')}
                     defaultValue=""
                   />
                 </div>
@@ -165,17 +166,17 @@ export default function PosterSkillPage() {
                   <span className="text-[#0f4cc8]">
                     <SparkIcon />
                   </span>
-                  <span>生成 1 张 · Gemini 3 Pro Image · 预计 0.12 · 自动选最优渠道</span>
+                  <span>{t('posterSkill.estimate')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-green-600">
                   <span className="h-2 w-2 rounded-full bg-green-600" />
-                  已自动保存
+                  {t('posterSkill.saved')}
                 </div>
               </div>
 
               <div className="flex items-center gap-3">
                 <Button type="button" className="flex-1 rounded-xl bg-[#0f4cc8] py-3 text-sm font-semibold text-white">
-                  生成设计图
+                  {t('posterSkill.generate')}
                 </Button>
                 <div className="flex items-center rounded-xl bg-[#f4f6fb] px-4 py-3 text-sm text-slate-500">
                   <button type="button" className="px-2 text-lg leading-none">
@@ -185,7 +186,7 @@ export default function PosterSkillPage() {
                   <button type="button" className="px-2 text-lg leading-none">
                     +
                   </button>
-                  <span className="ml-2">张</span>
+                  <span className="ml-2">{t('posterSkill.unit')}</span>
                 </div>
               </div>
             </div>
@@ -193,8 +194,9 @@ export default function PosterSkillPage() {
             <div className="space-y-4">
               <div className="flex items-center justify-between gap-3">
                 <div className="flex gap-3">
-                  {['生成结果', '优秀案例', '历史记录'].map((item, index) => {
-                    const active = index === 0
+                  {[0, 1, 2].map((tabIndex) => {
+                    const item = t(`posterSkill.resultTabs.${tabIndex}`)
+                    const active = tabIndex === 0
                     return (
                       <Button
                         key={item}
@@ -228,7 +230,7 @@ export default function PosterSkillPage() {
                     <div className="absolute left-[42%] top-[40%] h-[2px] w-[52%] bg-[#c34b4b]" />
                     <div className="absolute left-[42%] top-[40%] h-[48px] w-[48px] border border-[#c34b4b]" />
                     <div className="absolute bottom-[16%] right-[8%] rounded bg-[#c34b4b] px-2 py-1 text-[10px] font-semibold text-white">
-                      非常优雅的美
+                      {t('posterSkill.posterBadge')}
                     </div>
                     <div className="absolute bottom-[10%] right-[8%] text-right text-[10px] font-semibold leading-tight text-slate-900">
                       GORGEOUS

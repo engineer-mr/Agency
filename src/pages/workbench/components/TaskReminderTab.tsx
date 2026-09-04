@@ -10,11 +10,11 @@ export function TaskReminderTab() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-slate-900">任务提醒</h2>
-          <p className="mt-2 text-sm text-slate-500">今天需要关注的工作和截止时间</p>
+          <h2 className="text-2xl font-semibold text-slate-900">{t('workbench.tasks.title')}</h2>
+          <p className="mt-2 text-sm text-slate-500">{t('workbench.tasks.subtitle')}</p>
         </div>
         <Button type="button" className="rounded-xl bg-[#0f4cc8] px-4 py-3 text-sm font-semibold text-white">
-          + 新建提醒
+          {t('workbench.tasks.create')}
         </Button>
       </div>
 

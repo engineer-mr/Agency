@@ -260,9 +260,9 @@ export default function AuthorPage() {
               type="button"
               className="rounded-2xl border border-slate-200 bg-white px-5 py-5 text-left shadow-sm transition hover:border-[#c9d7f8] hover:bg-[#f8faff]"
             >
-              <p className="text-sm text-slate-500">通知偏好</p>
+              <p className="text-sm text-slate-500">{t('author.preferences.notification')}</p>
               <div className="mt-2 flex items-center gap-2 text-base font-semibold text-slate-900">
-                已开启
+                {t('author.preferences.notificationEnabled')}
                 <ChevronRightIcon />
               </div>
             </button>
@@ -271,9 +271,9 @@ export default function AuthorPage() {
               type="button"
               className="rounded-2xl border border-slate-200 bg-white px-5 py-5 text-left shadow-sm transition hover:border-[#c9d7f8] hover:bg-[#f8faff]"
             >
-              <p className="text-sm text-slate-500">默认模型</p>
+              <p className="text-sm text-slate-500">{t('author.preferences.defaultModel')}</p>
               <div className="mt-2 flex items-center gap-2 text-base font-semibold text-slate-900">
-                自动选择
+                {t('author.preferences.autoSelect')}
                 <ChevronRightIcon />
               </div>
             </button>

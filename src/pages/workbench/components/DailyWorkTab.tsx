@@ -14,11 +14,11 @@ export function DailyWorkTab() {
       <section>
         <div className="mb-5 flex items-end justify-between">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900">精选 Skills</h2>
-            <p className="mt-2 text-sm text-slate-500">把复杂工作变成一步到位的专业工具</p>
+            <h2 className="text-2xl font-semibold text-slate-900">{t('workbench.daily.title')}</h2>
+            <p className="mt-2 text-sm text-slate-500">{t('workbench.daily.subtitle')}</p>
           </div>
           <Button type="button" className="text-sm font-semibold text-[#0f4cc8]">
-            查看全部
+            {t('workbench.daily.viewAll')}
           </Button>
         </div>
 
@@ -36,10 +36,10 @@ export function DailyWorkTab() {
       <section>
         <div className="mb-5 flex items-end justify-between">
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900">Web3 工作台</h2>
-            <p className="mt-2 text-sm text-slate-500">面向链上项目、社区和数字资产的专业 Skills</p>
+            <h2 className="text-2xl font-semibold text-slate-900">{t('workbench.daily.web3Title')}</h2>
+            <p className="mt-2 text-sm text-slate-500">{t('workbench.daily.web3Subtitle')}</p>
           </div>
-          <span className="text-sm text-slate-300">Beta</span>
+          <span className="text-sm text-slate-300">{t('workbench.daily.beta')}</span>
         </div>
 
         <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">

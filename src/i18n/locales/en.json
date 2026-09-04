@@ -241,7 +241,26 @@
     "web": "Web",
     "db": "Database",
     "headers": { "name": "Name", "owner": "Owner", "location": "Location", "recent": "Recent access" },
-    "allType": "All types"
+    "allType": "All types",
+    "browseByType": "Browse by type",
+    "uploadFile": "Upload file",
+    "newSpace": "New space",
+    "rows": [
+      { "name": "🤓🚗 Using the library with Agent...", "owner": "vickymzzhou", "location": "Team space", "recent": "12 min ago" },
+      { "name": "🤓🚗 Using the library with Agent...", "owner": "vickymzzhou", "location": "Team space", "recent": "12 min ago" },
+      { "name": "Background", "owner": "vickymzzhou", "location": "My files", "recent": "40 min ago" },
+      { "name": "💗 Build personal and team libraries...", "owner": "vickymzzhou", "location": "Team space", "recent": "40 min ago" },
+      { "name": "Library beginner guide", "owner": "vickymzzhou", "location": "My files", "recent": "40 min ago" },
+      { "name": "Let people and AI work in one doc...", "owner": "vickymzzhou", "location": "My files", "recent": "1 hour ago" }
+    ],
+    "libraryRows": [
+      { "name": "Brand handbook", "owner": "vickymzzhou", "location": "My files", "recent": "12 min ago" },
+      { "name": "Product release notes", "owner": "vickymzzhou", "location": "My files", "recent": "12 min ago" },
+      { "name": "Visual assets", "owner": "vickymzzhou", "location": "My files", "recent": "40 min ago" },
+      { "name": "Team collaboration guide", "owner": "vickymzzhou", "location": "My files", "recent": "40 min ago" },
+      { "name": "Knowledge base guide", "owner": "vickymzzhou", "location": "My files", "recent": "40 min ago" },
+      { "name": "Project checklist", "owner": "vickymzzhou", "location": "My files", "recent": "1 hour ago" }
+    ]
   },
   "knowledgeBaseDetail": {
     "title": "Knowledge Base",
@@ -295,9 +314,23 @@
       "title": "Add personal authorized connector",
       "body": "Once added, the current project can use the connector authenticated with your personal account. If you configure a public connector, you can do that after project creation.",
       "currentTemplate": "Current template: {{title}}",
-      "complete": "Done"
+      "complete": "Done",
+      "optionName": "Kling",
+      "optionDesc": "Turn an idea into a cinematic visual with one sentence. Kling / Kling AI."
     },
-    "menuItems": { "top": "Pin", "share": "Share", "rename": "Rename", "delete": "Delete" }
+    "menuItems": { "top": "Pin", "share": "Share", "rename": "Rename", "delete": "Delete" },
+    "instructionPlaceholder": "Provide project context and rules so WorkBuddy can respond more accurately, such as goals, team habits, style preferences, and output constraints.",
+    "moreActions": "More project actions",
+    "projectItems": [
+      { "title": "Logo poster design", "desc": "Poster design · just now", "badge": "POSTER", "status": "Draft" },
+      { "title": "Velora brand website", "desc": "Website design · yesterday", "badge": "S", "status": "" }
+    ],
+    "templateItems": [
+      { "title": "Brand launch workflow", "desc": "From strategy and content to launch delivery" },
+      { "title": "Event marketing project", "desc": "Event planning, posters, and promotional content" },
+      { "title": "Team knowledge capture", "desc": "Continuously organize SOPs, learnings, and FAQs" },
+      { "title": "Project delivery management", "desc": "Manage requirements, plans, risks, and weekly reports" }
+    ]
   },
   "connectionCenter": {
     "title": "Choose your IM tools",
@@ -338,7 +371,10 @@
     "preferences": {
       "title": "Work preferences",
       "subtitle": "Make Skill fit the way you work",
+      "notification": "Notification preferences",
+      "notificationEnabled": "Enabled",
       "defaultModel": "Default model",
+      "autoSelect": "Auto select",
       "defaultModelDesc": "Automatically choose the best model for the current task",
       "language": "Language",
       "languageDesc": "Used for generated content and UI",
@@ -465,6 +501,7 @@
     }
   },
   "workbench": {
+    "useSkill": "Use Skill",
     "tabs": {
       "daily": "Daily work",
       "web3": "Web3",
@@ -501,6 +538,15 @@
       "hint": "Click to start",
       "workbenchTitle": "Common tools workbench",
       "workbenchSubtitle": "Professional Skills for content creation and daily operations"
+    },
+    "web3": {
+      "title": "Web3 Skills workbench",
+      "subtitle": "Turn exchange connections, market data, and strategy settings into ready-to-use tools",
+      "connectorsTitle": "Exchange connectors",
+      "connectorsSubtitle": "View available exchanges and on-chain entries",
+      "viewAllConnectors": "View all connectors",
+      "strategyTitle": "Strategy Skills",
+      "strategyHint": "Ready to call"
     },
     "data": {
       "dailyWorkCards": [
@@ -570,5 +616,32 @@
         { "title": "Asset library", "desc": "Manage brand and creative assets" }
       ]
     }
+  },
+  "posterSkill": {
+    "title": "Poster creation",
+    "tabs": ["Fashion poster", "Asset fitting", "Poster display", "Art design"],
+    "settings": {
+      "model": "Model",
+      "ratio": "Ratio",
+      "resolution": "Resolution",
+      "auto": "Auto",
+      "standard": "1k standard"
+    },
+    "sections": {
+      "model": "1. Model · user selectable",
+      "product": "2. Product image · optional",
+      "production": "3. Production settings",
+      "inspiration": "4. Design inspiration"
+    },
+    "chooseFromKnowledge": "Choose from knowledge base",
+    "uploadTitle": "Upload your product image",
+    "uploadDesc": "Use it in the design / poster; leave blank for text-only generation",
+    "promptPlaceholder": "For example: French vintage floral dress, lantern sleeves, waist fit, tea dress collar",
+    "estimate": "Generate 1 image · Gemini 3 Pro Image · estimated 0.12 · auto-select best channel",
+    "saved": "Auto saved",
+    "generate": "Generate design",
+    "unit": "image",
+    "resultTabs": ["Results", "Best cases", "History"],
+    "posterBadge": "Elegant beauty"
   }
 }
