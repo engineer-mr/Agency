@@ -35,6 +35,12 @@
     "eyebrow": "QUANTX AGENT · BETA",
     "title": "交易信号与自动执行",
     "subtitle": "让 Agent 持续观察市场，在你的风险边界内行动",
+    "tabs": {
+      "signals": "交易信号",
+      "marketplace": "交易 Agent 广场",
+      "leaderboard": "排行榜"
+    },
+    "placeholder": "内容正在准备中，稍后会在这里开放。",
     "status": {
       "paused": "Agent 已暂停",
       "detail": "仅观察模式 · 未连接交易账户",
@@ -54,6 +60,100 @@
       "subtitle": "选择经过平台评估的交易 Agent，查看数据后直接下单",
       "viewAll": "查看全部",
       "cta": "直接下单"
+    },
+    "marketplace": {
+      "eyebrow": "TRADING SKILLS MARKET",
+      "summary": "18 个已评估技能",
+      "filterLabel": "按类型浏览",
+      "sort": "综合分数",
+      "note": "综合分数由历史回测、模拟盘记录、风险控制、数据质量和近期稳定性组成，不代表未来收益。平台不承诺任何策略盈利。",
+      "risk": {
+        "medium": "中等风险",
+        "high": "较高风险"
+      },
+      "stats": {
+        "overall": "综合分数",
+        "stability": "稳定性",
+        "risk": "风险控制"
+      },
+      "filters": {
+        "all": "全部技能",
+        "cex": "趋势策略",
+        "dex": "套利策略",
+        "strategy": "风险观察"
+      },
+      "items": [
+        {
+          "name": "趋势跟随 Pro",
+          "desc": "基于价格结构、成交量确认和波动率过滤，捕捉主流资产趋势机会。",
+          "meta": "BTC / ETH"
+        },
+        {
+          "name": "跨市场价差",
+          "desc": "比较 Binance 与 Hyperliquid 的价格、资金费率和执行成本。",
+          "meta": "Binance / Hyperliquid"
+        },
+        {
+          "name": "波动突破观察",
+          "desc": "监测波动率放大和关键区间突破，适合高风险偏好用户。",
+          "meta": "SOL / BTC"
+        },
+        {
+          "name": "跨市场价差",
+          "desc": "比较 Binance 与 Hyperliquid 的价格、资金费率和执行成本。",
+          "meta": "Binance / Hyperliquid"
+        },
+        {
+          "name": "波动突破观察",
+          "desc": "监测波动率放大和关键区间突破，适合高风险偏好用户。",
+          "meta": "SOL / BTC"
+        },
+        {
+          "name": "波动突破观察",
+          "desc": "监测波动率放大和关键区间突破，适合高风险偏好用户。",
+          "meta": "SOL / BTC"
+        }
+      ]
+    },
+    "leaderboard": {
+      "title": "排行榜",
+      "subtitle": "展示当前表现靠前的交易策略与 Agent。",
+      "updatedAt": "更新时间 2 分钟前",
+      "filterLabel": "排行榜浏览",
+      "sort": "综合排序",
+      "note": "榜单数据会结合最近的交易活跃度、收益表现、用户增长和热度变化综合展示，数据仅供参考，不构成收益承诺。",
+      "tabs": {
+        "summary": "综合榜",
+        "users": "用户榜",
+        "trades": "交易榜",
+        "profits": "收益榜",
+        "hot": "热度榜"
+      },
+      "columns": {
+        "rank": "排名",
+        "agent": "Agent",
+        "users": "用户数",
+        "orders": "订单数",
+        "profit": "收益",
+        "views": "浏览量",
+        "score": "综合分",
+        "newUsers": "新增用户",
+        "growth": "增长率",
+        "retention": "7日留存",
+        "usagePerUser": "人均使用",
+        "orderCount": "订单数量",
+        "validOrders": "有效订单",
+        "fillRate": "成交率",
+        "perUserOrder": "人均下单",
+        "totalProfit": "总收益",
+        "roi": "ROI",
+        "winRate": "胜率",
+        "maxDrawdown": "最大回撤",
+        "uniqueVisitors": "独立访客",
+        "favorites": "收藏数",
+        "conversion": "转化率",
+        "hotGrowth": "热度增长"
+      }
     },
     "queue": {
       "title": "执行队列",

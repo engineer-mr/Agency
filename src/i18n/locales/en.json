@@ -35,6 +35,12 @@
     "eyebrow": "QUANTX AGENT · BETA",
     "title": "Trading signals and auto execution",
     "subtitle": "Keep watching the market and act within your risk boundaries",
+    "tabs": {
+      "signals": "Trading signals",
+      "marketplace": "Trading Agent marketplace",
+      "leaderboard": "Leaderboard"
+    },
+    "placeholder": "This section is being prepared and will be available here later.",
     "status": {
       "paused": "Agent paused",
       "detail": "Observe only · No trading account connected",
@@ -53,6 +59,100 @@
       "subtitle": "Choose an evaluated trading Agent and place orders after reviewing the data",
       "viewAll": "View all",
       "cta": "Place order"
+    },
+    "marketplace": {
+      "eyebrow": "TRADING SKILLS MARKET",
+      "summary": "18 evaluated skills",
+      "filterLabel": "Browse by type",
+      "sort": "Overall score",
+      "note": "Overall score is based on backtests, paper trading, risk control, data quality, and recent stability. It does not guarantee future returns.",
+      "risk": {
+        "medium": "Medium risk",
+        "high": "Higher risk"
+      },
+      "stats": {
+        "overall": "Overall score",
+        "stability": "Stability",
+        "risk": "Risk control"
+      },
+      "filters": {
+        "all": "All skills",
+        "cex": "Trend strategies",
+        "dex": "Arbitrage strategies",
+        "strategy": "Risk watch"
+      },
+      "items": [
+        {
+          "name": "Trend Follow Pro",
+          "desc": "Capture opportunities in major assets with price structure, volume confirmation, and volatility filters.",
+          "meta": "BTC / ETH"
+        },
+        {
+          "name": "Cross-market spread",
+          "desc": "Compare prices, funding rates, and execution costs across Binance and Hyperliquid.",
+          "meta": "Binance / Hyperliquid"
+        },
+        {
+          "name": "Volatility breakout watch",
+          "desc": "Monitor volatility expansion and key range breakouts for high-risk users.",
+          "meta": "SOL / BTC"
+        },
+        {
+          "name": "Cross-market spread",
+          "desc": "Compare prices, funding rates, and execution costs across Binance and Hyperliquid.",
+          "meta": "Binance / Hyperliquid"
+        },
+        {
+          "name": "Volatility breakout watch",
+          "desc": "Monitor volatility expansion and key range breakouts for high-risk users.",
+          "meta": "SOL / BTC"
+        },
+        {
+          "name": "Volatility breakout watch",
+          "desc": "Monitor volatility expansion and key range breakouts for high-risk users.",
+          "meta": "SOL / BTC"
+        }
+      ]
+    },
+    "leaderboard": {
+      "title": "Leaderboard",
+      "subtitle": "Show the top-performing strategies and Agents right now.",
+      "updatedAt": "Updated 2 minutes ago",
+      "filterLabel": "Browse rankings",
+      "sort": "Overall sort",
+      "note": "The leaderboard combines recent trading activity, earnings, user growth, and popularity changes. The data is for reference only and does not guarantee returns.",
+      "tabs": {
+        "summary": "Summary",
+        "users": "Users",
+        "trades": "Trades",
+        "profits": "Profits",
+        "hot": "Hot"
+      },
+      "columns": {
+        "rank": "Rank",
+        "agent": "Agent",
+        "users": "Users",
+        "orders": "Orders",
+        "profit": "Profit",
+        "views": "Views",
+        "score": "Score",
+        "newUsers": "New users",
+        "growth": "Growth",
+        "retention": "7-day retention",
+        "usagePerUser": "Usage per user",
+        "orderCount": "Order count",
+        "validOrders": "Valid orders",
+        "fillRate": "Fill rate",
+        "perUserOrder": "Orders per user",
+        "totalProfit": "Total profit",
+        "roi": "ROI",
+        "winRate": "Win rate",
+        "maxDrawdown": "Max drawdown",
+        "uniqueVisitors": "Unique visitors",
+        "favorites": "Favorites",
+        "conversion": "Conversion",
+        "hotGrowth": "Hot growth"
+      }
     },
     "queue": {
       "title": "Execution queue",
