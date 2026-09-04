@@ -45,6 +45,7 @@
       "title": "实时信号",
       "subtitle": "基于已启用策略生成，执行前仍需满足风控条件",
       "live": "LIVE",
+      "overallScore": "综合分数",
       "view": "查看详情",
       "order": "一键下单"
     },
@@ -147,6 +148,94 @@
       "dailyLoss": "30 USDT",
       "drawdown": "8%",
       "withdraw": "已关闭"
+    },
+    "riskDialog": {
+      "title": "风险边界",
+      "subtitle": "设置 Agent 单次和每日的最大风险，自动执行不会突破这些限制。",
+      "save": "保存风险配置",
+      "withdrawEnabled": "提现权限已开启",
+      "withdrawEnabledDesc": "平台和服务商可以发起提现或转账操作。",
+      "withdrawDisabled": "提现权限已关闭",
+      "withdrawDisabledDesc": "平台和服务商不会获得提现或转账权限。"
+    },
+    "orderPage": {
+      "back": "QuantX Agent",
+      "eyebrow": "ORDER CENTER",
+      "title": "订单记录",
+      "subtitle": "查看自主下单与 Agent 自动执行的完整记录。",
+      "newOrder": "新建订单",
+      "viewDetail": "查看详情",
+      "secondaryAction": "复制订单信息",
+      "skill": "关联技能",
+      "range": "最近30天",
+      "note": "所有订单均会经过策略条件与风险检查，自动执行记录与自主确认记录会在这里统一归档。",
+      "tabs": {
+        "all": "全部",
+        "auto": "自动下单",
+        "manual": "自主下单"
+      },
+      "stats": {
+        "todayOrders": "今日订单",
+        "yesterday": "较昨日 +{{count}}",
+        "autoExecuted": "自动执行",
+        "queue": "执行队列",
+        "pendingConfirm": "待确认",
+        "needConfirm": "需要你的确认",
+        "realizedPnl": "已实现盈亏",
+        "todayUnit": "USDT · 今日"
+      }
+    },
+    "orderDetail": {
+      "back": "返回实时信号",
+      "eyebrow": "SIGNAL DETAIL · BTC / USDT",
+      "title": "BTC / USDT · 突破观察",
+      "subtitle": "Binance · 15m · 更新时间 2 分钟前",
+      "scoreLabel": "偏多",
+      "primaryAction": "手动确认以执行",
+      "chartTitle": "行情与触发区间",
+      "chartSubtitle": "基于实时行情的信号快照，不代表未来收益",
+      "timeframe": "15m",
+      "observation": "观察区 68,000",
+      "currentPrice": "当前价格",
+      "change24h": "24h变化",
+      "volume": "成交量",
+      "triggersTitle": "为什么会触发",
+      "triggersSubtitle": "Agent 使用以下条件形成此信号",
+      "triggerPassed": "已通过当前风控",
+      "note": "本页面展示的是模型生成的市场信号。数字资产价格波动剧烈，历史回测、模拟盘和信号评分均不代表未来结果。",
+      "adviceTitle": "执行建议",
+      "adviceSubtitle": "信号不是交易指令",
+      "riskControl": "风控中",
+      "directionLabel": "建议方向",
+      "direction": "BUY / 做多",
+      "positionLabel": "建议仓位",
+      "stopLossLabel": "止损参考",
+      "takeProfitLabel": "止盈参考",
+      "riskOk": "已通过当前风控",
+      "riskOkDesc": "仍需启动 Agent 或手动确认后执行",
+      "confirmAction": "手动确认以执行",
+      "secondaryAction": "去设置自动执行",
+      "strategyEyebrow": "STRATEGY",
+      "strategyTitle": "趋势跟随 · BTC 15m",
+      "strategyBody": "通过价格结构、成交量和波动率共同判断短周期趋势变化。",
+      "strategyLink": "查看策略配置",
+      "triggers": [
+        {
+          "title": "价格突破区间上沿",
+          "desc": "连续 3 根 K 线收于 67,800 上方",
+          "status": "通过"
+        },
+        {
+          "title": "成交量确认",
+          "desc": "当前成交量高于 20 周期均值 1.6 倍",
+          "status": "通过"
+        },
+        {
+          "title": "波动率检查",
+          "desc": "ATR 处于过去 30 天的 68 分位",
+          "status": "注意"
+        }
+      ]
     }
   },
   "login": {
@@ -507,10 +596,11 @@
     }
   },
   "workbench": {
-    "useSkill": "使用 Skill",
+    "useSkill": "使用",
     "tabs": {
       "daily": "日常工作",
       "web3": "Web3",
+      "agent": "Agent 广场",
       "skills": "技能广场",
       "task": "任务提醒",
       "tools": "常用工具"
@@ -523,11 +613,109 @@
       "web3Subtitle": "面向链上项目、社区和数字资产的专业 Skills",
       "beta": "Beta"
     },
+    "websiteDialog": {
+      "title": "网站",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "构建或更新专业的浏览器体验，包括重现 UI 界面、将复杂数据转化为交互式仪表盘，以及开发响应式网页布局和动态交互功能，满足各类网页开发需求。",
+      "examplesTitle": "使用示例",
+      "try": "试用",
+      "chooseConversation": "选择对话",
+      "useAgent": "使用Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "我有一张登录页面的截图。你能用 React 和 Tailwind CSS 重现这个界面，并确保它在移动端能完美适配吗？"
+        },
+        {
+          "label": "Prompt",
+          "body": "利用这些销售数据构建一个交互式仪表盘，让我可以切换不同区域，并通过动态图表查看每月的增长趋势。"
+        }
+      ]
+    },
+    "marketingDialog": {
+      "title": "营销文案",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "专业文档创作与修改工具。支持撰写报告、论文、商业计划书等各类长文本，并能对现有内容进行润色、总结或翻译，全方位提升文案的专业度、逻辑性与表达效果。",
+      "examplesTitle": "使用示例",
+      "try": "试用",
+      "chooseConversation": "选择对话",
+      "useAgent": "使用Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "为西雅图的一家新精品咖啡店撰写一份详细的商业计划书，包括市场分析、预算预估以及第一年的营销策略。"
+        },
+        {
+          "label": "Prompt",
+          "body": "撰写一篇全面的研究论文，探讨过去十年可再生能源对全球经济增长的影响，并引用关键研究和相关的统计趋势。"
+        }
+      ]
+    },
+    "dataAnalysisDialog": {
+      "title": "数据分析",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "帮助您设置、审计和优化数据分析追踪。支持创建 GA4 追踪计划、调试 GTM 问题、管理 UTM 参数，并确保在各个平台上准确衡量转化效果和营销归因。",
+      "examplesTitle": "使用示例",
+      "try": "试用",
+      "chooseConversation": "选择对话",
+      "useAgent": "使用Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "我正在电子商务网站上推出新的结账流程。您能为 add_to_cart 和 begin_checkout 等 GA4 事件创建一个追踪计划吗？"
+        },
+        {
+          "label": "Prompt",
+          "body": "我的 Google Tag Manager 没有正确触发购买事件。请帮我审计设置，找出为什么转化数据没有显示在 GA4 中的原因。"
+        }
+      ]
+    },
     "skillsMarket": {
       "title": "技能广场",
       "subtitle": "从 Hummingbot 连接器体系提炼的 Web3 可视化 Skills",
       "summary": "50+ 连接器 · 18 个精选 Skills",
       "filters": ["全部", "CEX", "DEX", "策略工具"]
+    },
+    "agentMarket": {
+      "title": "Agent 广场",
+      "subtitle": "从 Hummingbot 连接器体系提炼的 Web3 可视化 Skills",
+      "summary": "50+ 连接器 · 18 个精选 Skills",
+      "filters": ["全部", "CEX", "DEX", "策略工具"],
+      "items": [
+        {
+          "title": "网站制作",
+          "desc": "从一句描述生成完整的网站，包含页面、文案与响应式布局。",
+          "meta": "Web builder"
+        },
+        {
+          "title": "海报制作",
+          "desc": "快速生成适合社交媒体、活动与推广的视觉海报。",
+          "meta": "Visual creator"
+        },
+        {
+          "title": "营销文案",
+          "desc": "为产品、活动和社交媒体生成有转化力的内容。",
+          "meta": "Copywriter"
+        },
+        {
+          "title": "Bybit 交易助手",
+          "desc": "根据市场数据整理现货与永续交易观察。",
+          "meta": "CLOB CEX"
+        },
+        {
+          "title": "Coinbase 资产观察",
+          "desc": "关注主流资产价格、成交量与市场变化。",
+          "meta": "CLOB CEX"
+        },
+        {
+          "title": "Kraken 行情报告",
+          "desc": "把交易所市场数据整理成可读的行情报告。",
+          "meta": "CLOB CEX"
+        }
+      ]
     },
     "tasks": {
       "title": "任务提醒",

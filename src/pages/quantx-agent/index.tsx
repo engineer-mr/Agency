@@ -1,5 +1,7 @@
 import { Button } from '@base-ui/react/button'
+import { Dialog } from '@base-ui/react/dialog'
 import { useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '../../components/Sidebar'
 import { useI18n } from '../../i18n'
 
@@ -21,6 +23,28 @@ function SignalIcon({ label, tone }: { label: string; tone: 'orange' | 'slate' |
   return (
     <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-sm font-semibold ${styles}`}>
       {label}
+    </div>
+  )
+}
+
+function SignalScore({
+  risk,
+  score,
+  overallLabel,
+  tone,
+}: {
+  risk: string
+  score: string
+  overallLabel: string
+  tone: 'green' | 'orange'
+}) {
+  return (
+    <div className="min-w-[88px]">
+      <div className="text-sm font-medium text-slate-500">{risk}</div>
+      <div className={`mt-1 text-[22px] font-semibold leading-none ${tone === 'orange' ? 'text-[#f28a4b]' : 'text-[#24a37c]'}`}>
+        {score}
+      </div>
+      <div className="mt-1 text-xs text-slate-400">{overallLabel}</div>
     </div>
   )
 }
@@ -60,10 +84,143 @@ function SwitchRow({
   )
 }
 
+function CloseIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="m6 6 12 12M18 6 6 18" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+function RiskBoundaryDialog({
+  open,
+  onOpenChange,
+  limit,
+  onLimitChange,
+  dailyLoss,
+  onDailyLossChange,
+  drawdown,
+  onDrawdownChange,
+  withdrawAllowed,
+}: {
+  open: boolean
+  onOpenChange: (open: boolean) => void
+  limit: string
+  onLimitChange: (value: string) => void
+  dailyLoss: string
+  onDailyLossChange: (value: string) => void
+  drawdown: string
+  onDrawdownChange: (value: string) => void
+  withdrawAllowed: boolean
+}) {
+  const { t } = useI18n()
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange} modal>
+      <Dialog.Portal>
+        <Dialog.Backdrop className="fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-[1px]" />
+        <Dialog.Popup
+          className="fixed left-1/2 top-1/2 z-50 w-[560px] max-w-[calc(100vw-32px)] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white p-6 shadow-[0_18px_60px_rgba(15,23,42,0.22)] outline-none"
+          initialFocus={false}
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <Dialog.Title className="text-[22px] font-semibold tracking-tight text-slate-900">
+                {t('quantxAgent.riskDialog.title')}
+              </Dialog.Title>
+              <p className="mt-2 text-sm text-slate-500">{t('quantxAgent.riskDialog.subtitle')}</p>
+            </div>
+            <Dialog.Close className="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-700">
+              <CloseIcon />
+            </Dialog.Close>
+          </div>
+
+          <div className="mt-6 space-y-4">
+            {[
+              {
+                label: t('quantxAgent.control.limit'),
+                value: limit,
+                onChange: onLimitChange,
+                suffix: 'USDT',
+                type: 'number' as const,
+              },
+              {
+                label: t('quantxAgent.control.dailyLoss'),
+                value: dailyLoss,
+                onChange: onDailyLossChange,
+                suffix: 'USDT',
+                type: 'number' as const,
+              },
+              {
+                label: t('quantxAgent.control.drawdown'),
+                value: drawdown,
+                onChange: onDrawdownChange,
+                suffix: '%',
+                type: 'number' as const,
+              },
+            ].map((field) => (
+              <label key={field.label} className="grid grid-cols-[140px_minmax(0,1fr)_48px] items-center gap-3">
+                <span className="text-sm font-semibold text-slate-900">{field.label}</span>
+                <input
+                  value={field.value}
+                  onChange={(event) => field.onChange(event.target.value)}
+                  type={field.type}
+                  inputMode="decimal"
+                  className="h-11 w-full rounded-xl border border-slate-200 px-3 text-sm font-semibold text-slate-900 outline-none placeholder:text-slate-300 focus:border-[#0f4cc8]"
+                />
+                <span className="text-sm font-medium text-slate-400">{field.suffix}</span>
+              </label>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-2xl bg-[#f1faf4] px-4 py-4">
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 flex h-7 w-7 items-center justify-center rounded-full bg-[#24b07b] text-white">
+                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none" aria-hidden="true">
+                  <path
+                    d="m5 12 5 5L19 8"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-900">
+                  {withdrawAllowed ? t('quantxAgent.riskDialog.withdrawEnabled') : t('quantxAgent.riskDialog.withdrawDisabled')}
+                </p>
+                <p className="mt-1 text-sm text-slate-500">
+                  {withdrawAllowed ? t('quantxAgent.riskDialog.withdrawEnabledDesc') : t('quantxAgent.riskDialog.withdrawDisabledDesc')}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <Button
+            type="button"
+            onClick={() => onOpenChange(false)}
+            className="mt-6 h-12 w-full rounded-xl bg-[#0f4cc8] text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]"
+          >
+            {t('quantxAgent.riskDialog.save')}
+          </Button>
+        </Dialog.Popup>
+      </Dialog.Portal>
+    </Dialog.Root>
+  )
+}
+
 export default function QuantxAgentPage() {
   const { t } = useI18n()
+  const navigate = useNavigate()
   const [receiveSignals, setReceiveSignals] = useState(true)
   const [autoOrder, setAutoOrder] = useState(false)
+  const [riskDialogOpen, setRiskDialogOpen] = useState(false)
+  const [riskLimit, setRiskLimit] = useState('100')
+  const [dailyLoss, setDailyLoss] = useState('30')
+  const [drawdown, setDrawdown] = useState('8')
+  const [withdrawAllowed] = useState(false)
+  const overallScoreLabel = t('quantxAgent.signals.overallScore')
 
   const signals = useMemo(
     () => [
@@ -74,6 +231,7 @@ export default function QuantxAgentPage() {
         score: t('quantxAgent.signalsList.0.score'),
         icon: 'BTC',
         tone: 'orange' as const,
+        scoreTone: 'green' as const,
       },
       {
         label: t('quantxAgent.signalsList.1.pair'),
@@ -82,6 +240,7 @@ export default function QuantxAgentPage() {
         score: t('quantxAgent.signalsList.1.score'),
         icon: 'ETH',
         tone: 'slate' as const,
+        scoreTone: 'green' as const,
       },
       {
         label: t('quantxAgent.signalsList.2.pair'),
@@ -90,6 +249,7 @@ export default function QuantxAgentPage() {
         score: t('quantxAgent.signalsList.2.score'),
         icon: 'SOL',
         tone: 'violet' as const,
+        scoreTone: 'orange' as const,
       },
     ],
     [t],
@@ -136,9 +296,29 @@ export default function QuantxAgentPage() {
     },
   ]
 
+  const splitScore = (score: string) => {
+    const [label, value] = score.split(/\s+/, 2)
+    return {
+      label,
+      value: value ?? '',
+    }
+  }
+
   return (
     <div className="flex min-h-screen bg-white text-slate-900">
       <Sidebar />
+
+      <RiskBoundaryDialog
+        open={riskDialogOpen}
+        onOpenChange={setRiskDialogOpen}
+        limit={riskLimit}
+        onLimitChange={setRiskLimit}
+        dailyLoss={dailyLoss}
+        onDailyLossChange={setDailyLoss}
+        drawdown={drawdown}
+        onDrawdownChange={setDrawdown}
+        withdrawAllowed={withdrawAllowed}
+      />
 
       <main className="min-w-0 flex-1 overflow-x-hidden px-8 py-8">
         <section className="mx-auto w-full max-w-[1250px]">
@@ -182,20 +362,28 @@ export default function QuantxAgentPage() {
 
                 <div className="divide-y divide-slate-100">
                   {signals.map((signal) => (
-                    <div key={signal.label} className="flex flex-wrap items-center gap-4 py-5">
-                      <SignalIcon label={signal.icon} tone={signal.tone} />
-                      <div className="min-w-0 flex-1">
-                        <h3 className="text-base font-semibold text-slate-900">{signal.label}</h3>
-                        <p className="mt-1 text-sm text-slate-500">{signal.meta}</p>
+                    <div
+                      key={signal.label}
+                      className="grid grid-cols-1 items-center gap-4 py-4 md:grid-cols-[minmax(0,1fr)_110px_110px] md:gap-6"
+                    >
+                      <div className="flex min-w-0 items-center gap-4">
+                        <SignalIcon label={signal.icon} tone={signal.tone} />
+                        <div className="min-w-0">
+                          <h3 className="truncate text-base font-semibold text-slate-900">{signal.label}</h3>
+                          <p className="mt-1 text-sm text-slate-500">{signal.meta}</p>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-5 text-sm text-slate-500">
-                        <span>{signal.risk}</span>
-                        <span className="text-lg font-semibold text-slate-900">{signal.score}</span>
-                      </div>
-                      <Button type="button" className="h-10 rounded-xl border border-slate-200 bg-white px-4 text-sm font-semibold text-[#0f4cc8] hover:bg-slate-50">
-                        {t('quantxAgent.signals.view')}
-                      </Button>
-                      <Button type="button" className="h-10 rounded-xl bg-[#eef2fb] px-4 text-sm font-semibold text-[#0f4cc8] hover:bg-[#e3ebff]">
+                      <SignalScore
+                        risk={signal.risk}
+                        score={signal.score}
+                        overallLabel={overallScoreLabel}
+                        tone={signal.scoreTone}
+                      />
+                      <Button
+                        type="button"
+                        onClick={() => navigate('/quantx-agent/order')}
+                        className="h-10 justify-self-start rounded-xl bg-[#eef2fb] px-4 text-sm font-semibold text-[#0f4cc8] hover:bg-[#e3ebff] md:justify-self-end"
+                      >
                         {t('quantxAgent.signals.order')}
                       </Button>
                     </div>
@@ -209,7 +397,7 @@ export default function QuantxAgentPage() {
                     <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{t('quantxAgent.market.title')}</h2>
                     <p className="mt-2 text-sm text-slate-500">{t('quantxAgent.market.subtitle')}</p>
                   </div>
-                  <Button type="button" className="text-sm font-semibold text-[#0f4cc8]">
+                  <Button type="button" className="text-sm font-semibold text-[#0f4cc8] flex justify-center items-center">
                     {t('quantxAgent.market.viewAll')} <ChevronRightIcon />
                   </Button>
                 </div>
@@ -221,7 +409,10 @@ export default function QuantxAgentPage() {
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#eef2fb] text-[#0f4cc8]">
                           ✦
                         </div>
-                        <span className="text-2xl font-semibold tracking-tight text-slate-900">{agent.score}</span>
+                        <div className="flex items-baseline gap-1">
+                          <span className="text-sm font-semibold text-slate-500">{splitScore(agent.score).label}</span>
+                          <span className="text-2xl font-semibold tracking-tight text-slate-900  relative top-[0.1rem]">{splitScore(agent.score).value}</span>
+                        </div>
                       </div>
                       <h3 className="mt-5 text-lg font-semibold text-slate-900">{agent.title}</h3>
                       <p className="mt-3 text-sm leading-6 text-slate-500">{agent.summary}</p>
@@ -231,7 +422,9 @@ export default function QuantxAgentPage() {
                             <span key={item}>{item}</span>
                           ))}
                         </div>
-                        <Button type="button" className="mt-5 text-sm font-semibold text-[#0f4cc8]">
+                        <Button type="button"
+                        onClick={() => navigate('/quantx-agent/order')}
+                        className="mt-5 text-sm font-semibold text-[#0f4cc8] flex justify-center items-center">
                           {t('quantxAgent.market.cta')} <ChevronRightIcon />
                         </Button>
                       </div>
@@ -246,7 +439,11 @@ export default function QuantxAgentPage() {
                     <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{t('quantxAgent.queue.title')}</h2>
                     <p className="mt-2 text-sm text-slate-500">{t('quantxAgent.queue.subtitle')}</p>
                   </div>
-                  <Button type="button" className="text-sm font-semibold text-[#0f4cc8]">
+                  <Button
+                    type="button"
+                    onClick={() => navigate('/quantx-agent/orders')}
+                    className="text-sm font-semibold text-[#0f4cc8] flex justify-center items-center"
+                  >
                     {t('quantxAgent.queue.viewAll')} <ChevronRightIcon />
                   </Button>
                 </div>
@@ -289,7 +486,7 @@ export default function QuantxAgentPage() {
                   <p>
                     自动交易不能消除市场风险。建议先使用模拟盘，API 仅开启读取与交易权限，关闭提现与转账，并随时保留暂停和撤销授权的控制权。
                   </p>
-                  <Button type="button" className="text-sm font-semibold text-[#0f4cc8]">
+                  <Button type="button" className="text-sm font-semibold text-[#0f4cc8] flex justify-center items-center">
                     查看风险与权限说明 <ChevronRightIcon />
                   </Button>
                 </div>
@@ -326,31 +523,37 @@ export default function QuantxAgentPage() {
                 <div className="mt-4 rounded-2xl bg-[#eef3ff] px-4 py-4">
                   <div className="flex items-center justify-between gap-3">
                     <h3 className="text-lg font-semibold text-slate-900">{t('quantxAgent.control.risk')}</h3>
-                    <Button type="button" className="text-sm font-semibold text-[#0f4cc8]">
+                    <Button
+                      type="button"
+                      onClick={() => setRiskDialogOpen(true)}
+                      className="text-sm font-semibold text-[#0f4cc8]"
+                    >
                       {t('quantxAgent.control.edit')}
                     </Button>
                   </div>
                   <div className="mt-4 space-y-3 text-sm">
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-slate-500">{t('quantxAgent.control.limit')}</span>
-                      <span className="font-semibold text-slate-900">{t('quantxAgent.riskItems.limit')}</span>
+                      <span className="font-semibold text-slate-900">{riskLimit} USDT</span>
                     </div>
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-slate-500">{t('quantxAgent.control.dailyLoss')}</span>
-                      <span className="font-semibold text-slate-900">{t('quantxAgent.riskItems.dailyLoss')}</span>
+                      <span className="font-semibold text-slate-900">{dailyLoss} USDT</span>
                     </div>
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-slate-500">{t('quantxAgent.control.drawdown')}</span>
-                      <span className="font-semibold text-slate-900">{t('quantxAgent.riskItems.drawdown')}</span>
+                      <span className="font-semibold text-slate-900">{drawdown}%</span>
                     </div>
                     <div className="flex items-center justify-between gap-3">
                       <span className="text-slate-500">{t('quantxAgent.control.withdraw')}</span>
-                      <span className="font-semibold text-[#0f4cc8]">{t('quantxAgent.riskItems.withdraw')}</span>
+                      <span className="font-semibold text-[#0f4cc8]">
+                        {withdrawAllowed ? t('quantxAgent.riskDialog.withdrawEnabled') : t('quantxAgent.riskItems.withdraw')}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                <Button type="button" className="mt-4 h-12 w-full rounded-xl bg-[#0f4cc8] text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]">
+                <Button type="button" className="mt-4 h-12 w-full rounded-xl flex justify-center items-center bg-[#0f4cc8] text-sm font-semibold text-white shadow-sm transition hover:bg-[#123fa4]">
                   {t('quantxAgent.control.saved')} <ChevronRightIcon />
                 </Button>
               </section>

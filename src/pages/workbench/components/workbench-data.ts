@@ -137,6 +137,44 @@ export function createWorkbenchData(t: TFunction) {
         icon: 'K',
       },
     ] as const,
+    agentMarketItems: [
+      {
+        title: t('workbench.agentMarket.items.0.title'),
+        desc: t('workbench.agentMarket.items.0.desc'),
+        meta: t('workbench.agentMarket.items.0.meta'),
+        icon: '🌐',
+      },
+      {
+        title: t('workbench.agentMarket.items.1.title'),
+        desc: t('workbench.agentMarket.items.1.desc'),
+        meta: t('workbench.agentMarket.items.1.meta'),
+        icon: '🖼',
+      },
+      {
+        title: t('workbench.agentMarket.items.2.title'),
+        desc: t('workbench.agentMarket.items.2.desc'),
+        meta: t('workbench.agentMarket.items.2.meta'),
+        icon: 'T',
+      },
+      {
+        title: t('workbench.agentMarket.items.3.title'),
+        desc: t('workbench.agentMarket.items.3.desc'),
+        meta: t('workbench.agentMarket.items.3.meta'),
+        icon: 'Y',
+      },
+      {
+        title: t('workbench.agentMarket.items.4.title'),
+        desc: t('workbench.agentMarket.items.4.desc'),
+        meta: t('workbench.agentMarket.items.4.meta'),
+        icon: 'C',
+      },
+      {
+        title: t('workbench.agentMarket.items.5.title'),
+        desc: t('workbench.agentMarket.items.5.desc'),
+        meta: t('workbench.agentMarket.items.5.meta'),
+        icon: 'K',
+      },
+    ] as const,
     taskReminderItems: [
       {
         title: t('workbench.data.taskReminderItems.0.title'),

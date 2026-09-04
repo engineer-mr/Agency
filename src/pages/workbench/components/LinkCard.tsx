@@ -27,7 +27,12 @@ export function LinkCard({
         <h3 className="text-base font-semibold text-slate-900">{title}</h3>
         <p className="mt-1 text-sm text-slate-500">{desc}</p>
       </div>
-      <span className="text-2xl leading-none text-[#0f4cc8]">→</span>
+      <span className="text-sm leading-none text-[#0f4cc8] flex items-center">
+        使用
+      <svg className="ml-1" xmlns="http://www.w3.org/2000/svg" width="6" height="9" viewBox="0 0 6 9" fill="none">
+  <path d="M3.00053 4.49947L0 7.50018L1.49974 9L6 4.50053L1.49974 0L0 1.49982L3.00053 4.50053V4.49947Z" fill="#003CB1"/>
+</svg>
+</span>
     </div>
   )
 }

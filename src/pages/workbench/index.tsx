@@ -1,7 +1,8 @@
-import { type ReactElement, useState } from 'react'
+import { type ReactElement, useEffect, useState } from 'react'
 import { Button } from '@base-ui/react/button'
 import { Sidebar } from '../../components/Sidebar'
 import { useI18n } from '../../i18n'
+import { useLocation } from 'react-router-dom'
 import {
   DailyWorkTab,
   SkillsMarketTab,
@@ -10,27 +11,37 @@ import {
   Web3Tab,
 } from './components'
 
-type TabKey = 'daily' | 'web3' | 'skills' | 'task' | 'tools'
+type TabKey = 'daily' | 'web3' | 'agent' | 'skills' | 'task' | 'tools'
 
 const tabViews = {
   daily: DailyWorkTab,
   web3: Web3Tab,
-  skills: SkillsMarketTab,
+  agent: () => <SkillsMarketTab market="agent" />,
+  skills: () => <SkillsMarketTab market="skills" />,
   task: TaskReminderTab,
   tools: ToolsTab,
 } satisfies Record<TabKey, () => ReactElement>
 
 export default function WorkbenchPage() {
+  const location = useLocation()
   const [activeTab, setActiveTab] = useState<TabKey>('daily')
   const { t } = useI18n()
   const ActiveView = tabViews[activeTab]
   const tabs: Array<{ key: TabKey; label: string }> = [
     { key: 'daily', label: t('workbench.tabs.daily') },
     { key: 'web3', label: t('workbench.tabs.web3') },
+    { key: 'agent', label: t('workbench.tabs.agent') },
     { key: 'skills', label: t('workbench.tabs.skills') },
     { key: 'task', label: t('workbench.tabs.task') },
     { key: 'tools', label: t('workbench.tabs.tools') },
   ]
+
+  useEffect(() => {
+    const nextTab = (location.state as { activeTab?: TabKey } | null)?.activeTab
+    if (nextTab) {
+      setActiveTab(nextTab)
+    }
+  }, [location.state])
 
   return (
     <div className="flex min-h-screen bg-white text-slate-900">

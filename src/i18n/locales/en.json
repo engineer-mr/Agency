@@ -147,6 +147,94 @@
       "dailyLoss": "30 USDT",
       "drawdown": "8%",
       "withdraw": "Disabled"
+    },
+    "riskDialog": {
+      "title": "Risk boundaries",
+      "subtitle": "Set the Agent's maximum single-trade and daily risk. Auto execution will never break these limits.",
+      "save": "Save risk settings",
+      "withdrawEnabled": "Withdrawal permission enabled",
+      "withdrawEnabledDesc": "The platform and service provider can initiate withdrawals or transfers.",
+      "withdrawDisabled": "Withdrawal permission disabled",
+      "withdrawDisabledDesc": "The platform and service provider will not have withdrawal or transfer permission."
+    },
+    "orderPage": {
+      "back": "QuantX Agent",
+      "eyebrow": "ORDER CENTER",
+      "title": "Order records",
+      "subtitle": "Review the full record of manual orders and Agent execution.",
+      "newOrder": "New order",
+      "viewDetail": "View details",
+      "secondaryAction": "Copy order info",
+      "skill": "Linked skill",
+      "range": "Last 30 days",
+      "note": "All orders are checked against strategy conditions and risk limits before execution, and both automated and manual records are archived here.",
+      "tabs": {
+        "all": "All",
+        "auto": "Auto orders",
+        "manual": "Manual orders"
+      },
+      "stats": {
+        "todayOrders": "Today's orders",
+        "yesterday": "+{{count}} vs yesterday",
+        "autoExecuted": "Auto executed",
+        "queue": "Execution queue",
+        "pendingConfirm": "Pending confirm",
+        "needConfirm": "Need your confirmation",
+        "realizedPnl": "Realized PnL",
+        "todayUnit": "USDT · Today"
+      }
+    },
+    "orderDetail": {
+      "back": "Back to live signals",
+      "eyebrow": "SIGNAL DETAIL · BTC / USDT",
+      "title": "BTC / USDT · breakout watch",
+      "subtitle": "Binance · 15m · Updated 2 minutes ago",
+      "scoreLabel": "Bullish",
+      "primaryAction": "Confirm manually to execute",
+      "chartTitle": "Market and trigger range",
+      "chartSubtitle": "A real-time signal snapshot, not a forecast of future returns",
+      "timeframe": "15m",
+      "observation": "Observation zone 68,000",
+      "currentPrice": "Current price",
+      "change24h": "24h change",
+      "volume": "Volume",
+      "triggersTitle": "Why it triggered",
+      "triggersSubtitle": "The Agent formed this signal from the following conditions",
+      "triggerPassed": "Current risk checks passed",
+      "note": "This page shows a model-generated market signal. Crypto prices are highly volatile, and historical backtests, paper trading, and signal scores do not represent future results.",
+      "adviceTitle": "Execution advice",
+      "adviceSubtitle": "A signal is not a trade instruction",
+      "riskControl": "Risk control",
+      "directionLabel": "Suggested direction",
+      "direction": "BUY / Long",
+      "positionLabel": "Suggested size",
+      "stopLossLabel": "Stop-loss reference",
+      "takeProfitLabel": "Take-profit reference",
+      "riskOk": "Current risk checks passed",
+      "riskOkDesc": "You still need to start the Agent or confirm manually to execute",
+      "confirmAction": "Confirm manually to execute",
+      "secondaryAction": "Set up auto execution",
+      "strategyEyebrow": "STRATEGY",
+      "strategyTitle": "Trend follow · BTC 15m",
+      "strategyBody": "Use price structure, volume, and volatility together to judge short-term trend changes.",
+      "strategyLink": "View strategy settings",
+      "triggers": [
+        {
+          "title": "Price broke the upper range",
+          "desc": "Three consecutive candles closed above 67,800",
+          "status": "Pass"
+        },
+        {
+          "title": "Volume confirmation",
+          "desc": "Current volume is 1.6x the 20-period average",
+          "status": "Pass"
+        },
+        {
+          "title": "Volatility check",
+          "desc": "ATR is at the 68th percentile of the last 30 days",
+          "status": "Watch"
+        }
+      ]
     }
   },
   "login": {
@@ -501,10 +589,11 @@
     }
   },
   "workbench": {
-    "useSkill": "Use Skill",
+    "useSkill": "Go",
     "tabs": {
       "daily": "Daily work",
       "web3": "Web3",
+      "agent": "Agent plaza",
       "skills": "Skill plaza",
       "task": "Task reminders",
       "tools": "Tools"
@@ -517,11 +606,109 @@
       "web3Subtitle": "Professional Skills for on-chain projects, communities, and digital assets",
       "beta": "Beta"
     },
+    "websiteDialog": {
+      "title": "Website",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "Build or update a professional browser experience, including recreating UI screens, turning complex data into interactive dashboards, and developing responsive layouts with dynamic interactions for all kinds of web work.",
+      "examplesTitle": "Use examples",
+      "try": "Try",
+      "chooseConversation": "Choose conversation",
+      "useAgent": "Use Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "I have a screenshot of a login page. Can you recreate this interface with React and Tailwind CSS and make sure it fits mobile perfectly?"
+        },
+        {
+          "label": "Prompt",
+          "body": "Use this sales data to build an interactive dashboard so I can switch between regions and view monthly growth trends with dynamic charts."
+        }
+      ]
+    },
+    "marketingDialog": {
+      "title": "Marketing copy",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "A professional document writing and editing tool. It supports reports, papers, business plans, and other long-form text, and can polish, summarize, or translate existing content to improve professionalism, logic, and expression.",
+      "examplesTitle": "Use examples",
+      "try": "Try",
+      "chooseConversation": "Choose conversation",
+      "useAgent": "Use Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "Write a detailed business plan for a new specialty coffee shop in Seattle, including market analysis, budget estimates, and a first-year marketing strategy."
+        },
+        {
+          "label": "Prompt",
+          "body": "Draft a comprehensive research paper on the impact of renewable energy on global economic growth over the past decade, citing key studies and relevant statistical trends."
+        }
+      ]
+    },
+    "dataAnalysisDialog": {
+      "title": "Data analysis",
+      "author": "Agency",
+      "date": "2026/08/14",
+      "desc": "Help you set up, audit, and optimize analytics tracking. It supports GA4 tracking plans, GTM debugging, UTM management, and accurate measurement of conversion performance and marketing attribution across platforms.",
+      "examplesTitle": "Use examples",
+      "try": "Try",
+      "chooseConversation": "Choose conversation",
+      "useAgent": "Use Agent",
+      "prompts": [
+        {
+          "label": "Prompt",
+          "body": "I'm launching a new checkout flow on an e-commerce website. Can you create a GA4 tracking plan for events like add_to_cart and begin_checkout?"
+        },
+        {
+          "label": "Prompt",
+          "body": "My Google Tag Manager is not firing the purchase event correctly. Please audit the setup and find why conversion data is not showing up in GA4."
+        }
+      ]
+    },
     "skillsMarket": {
       "title": "Skill plaza",
       "subtitle": "Web3 visual Skills distilled from the Hummingbot connector ecosystem",
       "summary": "50+ connectors · 18 featured Skills",
       "filters": ["All", "CEX", "DEX", "Strategy tools"]
+    },
+    "agentMarket": {
+      "title": "Agent plaza",
+      "subtitle": "Web3 visual Skills distilled from the Hummingbot connector ecosystem",
+      "summary": "50+ connectors · 18 featured Skills",
+      "filters": ["All", "CEX", "DEX", "Strategy tools"],
+      "items": [
+        {
+          "title": "Website creation",
+          "desc": "Generate a complete website from a short description, including pages, copy, and responsive layout.",
+          "meta": "Web builder"
+        },
+        {
+          "title": "Poster creation",
+          "desc": "Quickly generate visual posters for social media, events, and promotions.",
+          "meta": "Visual creator"
+        },
+        {
+          "title": "Marketing copy",
+          "desc": "Generate high-converting copy for products, events, and social content.",
+          "meta": "Copywriter"
+        },
+        {
+          "title": "Bybit trading assistant",
+          "desc": "Turn market data into spot and perpetual trade observations.",
+          "meta": "CLOB CEX"
+        },
+        {
+          "title": "Coinbase asset watch",
+          "desc": "Monitor major asset prices, volume, and market changes.",
+          "meta": "CLOB CEX"
+        },
+        {
+          "title": "Kraken quote report",
+          "desc": "Turn exchange market data into a readable market report.",
+          "meta": "CLOB CEX"
+        }
+      ]
     },
     "tasks": {
       "title": "Task reminders",

@@ -3,19 +3,25 @@ import { useI18n } from '../../../i18n'
 import { SkillCard } from './SkillCard'
 import { createWorkbenchData } from './workbench-data'
 
-export function SkillsMarketTab() {
+export function SkillsMarketTab({ market = 'skills' }: { market?: 'skills' | 'agent' }) {
   const { t } = useI18n()
-  const { skillsMarketItems } = createWorkbenchData(t)
-  const chips = [0, 1, 2, 3].map((index) => t(`workbench.skillsMarket.filters.${index}`))
+  const { skillsMarketItems, agentMarketItems } = createWorkbenchData(t)
+  const chips =
+    market === 'agent'
+      ? [0, 1, 2, 3].map((index) => t(`workbench.agentMarket.filters.${index}`))
+      : [0, 1, 2, 3].map((index) => t(`workbench.skillsMarket.filters.${index}`))
+  const titleKey = market === 'agent' ? 'workbench.agentMarket.title' : 'workbench.skillsMarket.title'
+  const subtitleKey = market === 'agent' ? 'workbench.agentMarket.subtitle' : 'workbench.skillsMarket.subtitle'
+  const summaryKey = market === 'agent' ? 'workbench.agentMarket.summary' : 'workbench.skillsMarket.summary'
 
   return (
     <div className="space-y-6">
       <div className="mb-5 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-semibold text-slate-900">{t('workbench.skillsMarket.title')}</h2>
-          <p className="mt-2 text-sm text-slate-500">{t('workbench.skillsMarket.subtitle')}</p>
+          <h2 className="text-2xl font-semibold text-slate-900">{t(titleKey)}</h2>
+          <p className="mt-2 text-sm text-slate-500">{t(subtitleKey)}</p>
         </div>
-        <div className="text-sm text-slate-500">{t('workbench.skillsMarket.summary')}</div>
+        <div className="text-sm text-slate-500">{t(summaryKey)}</div>
       </div>
 
       <div className="flex items-center gap-3">
@@ -36,15 +42,13 @@ export function SkillsMarketTab() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 xl:grid-cols-3">
-        {skillsMarketItems.map((item) => (
-          <SkillCard
-            key={item.title}
-            title={item.title}
-            desc={item.desc}
-            meta="CLOB CEX"
-            icon={item.icon}
-          />
-        ))}
+        {market === 'agent'
+          ? agentMarketItems.map((item) => (
+              <SkillCard key={item.title} title={item.title} desc={item.desc} meta={item.meta} icon={item.icon} />
+            ))
+          : skillsMarketItems.map((item) => (
+              <SkillCard key={item.title} title={item.title} desc={item.desc} meta="CLOB CEX" icon={item.icon} />
+            ))}
       </div>
     </div>
   )
