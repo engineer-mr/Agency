@@ -1,4 +1,5 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import KnowledgeBasePage from './pages/knowledgeBase'
 import KnowledgeBaseDetailPage from './pages/knowledgeBase/detail'
 import HomePage from './pages/home'
@@ -14,9 +15,24 @@ import QuantxAgentOrdersPage from './pages/quantx-agent/orders'
 import QuantxAgentOrderPage from './pages/quantx-agent/order'
 import { I18nProvider } from './i18n'
 
+function ScrollToTop() {
+  const location = useLocation()
+
+  useEffect(() => {
+    window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    })
+  }, [location.key])
+
+  return null
+}
+
 function App() {
   return (
     <I18nProvider>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/home" element={<HomePage />} />
