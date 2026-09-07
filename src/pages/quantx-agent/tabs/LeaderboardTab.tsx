@@ -330,14 +330,14 @@ export default function LeaderboardTab() {
         t('quantxAgent.leaderboard.columns.hotGrowth'),
       ],
     } satisfies Record<LeaderboardTabKey, string[]>
-
-    const gridClasses = {
-      summary: 'grid-cols-[56px_minmax(0,1.72fr)_120px_120px_132px_112px_92px_128px]',
-      users: 'grid-cols-[56px_minmax(0,1.72fr)_112px_112px_112px_112px_120px_128px]',
-      trades: 'grid-cols-[56px_minmax(0,1.72fr)_120px_120px_112px_112px_112px_128px]',
-      profits: 'grid-cols-[56px_minmax(0,1.72fr)_132px_104px_104px_118px_128px]',
-      hot: 'grid-cols-[56px_minmax(0,1.72fr)_112px_112px_112px_112px_112px_128px]',
-    } satisfies Record<LeaderboardTabKey, string[]>
+  
+    const gridClasses: Record<LeaderboardTabKey, string[]> = {
+        summary: ['grid-cols-[56px_minmax(0,1.72fr)_120px_120px_132px_112px_92px_128px]'],
+        users: ['grid-cols-[56px_minmax(0,1.72fr)_112px_112px_112px_112px_120px_128px]'],
+        trades: ['grid-cols-[56px_minmax(0,1.72fr)_120px_120px_112px_112px_112px_128px]'],
+        profits: ['grid-cols-[56px_minmax(0,1.72fr)_132px_104px_104px_118px_128px]'],
+        hot: ['grid-cols-[56px_minmax(0,1.72fr)_112px_112px_112px_112px_112px_128px]'],
+    };
 
     return {
       columns,
