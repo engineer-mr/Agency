@@ -56,6 +56,7 @@ export default function QuantxAgentPage() {
           {activeTab === 'signals' ? <SignalsTab /> : null}
           {activeTab === 'marketplace' ? <MarketplaceTab /> : null}
           {activeTab === 'leaderboard' ? <LeaderboardTab /> : null}
+          <div className="pb-8"></div>
         </div>
       </main>
     </div>

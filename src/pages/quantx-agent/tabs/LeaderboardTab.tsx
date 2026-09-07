@@ -357,101 +357,103 @@ export default function LeaderboardTab() {
   const gridClasses = data.gridClasses[activeTab]
 
   return (
-    <section className="space-y-5 mx-auto w-full max-w-[1250px]">
-      <div className="flex items-start justify-between gap-6">
-        <div>
-          <p className="text-xs font-bold tracking-[0.32em] text-[#0f4cc8]">RANKING</p>
-          <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">{t('quantxAgent.leaderboard.title')}</h1>
-          <p className="mt-4 text-sm text-slate-500">{t('quantxAgent.leaderboard.subtitle')}</p>
+    <div className="mx-auto w-full max-w-[1250px]">
+      <section className="space-y-5 ">
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <p className="text-xs font-bold tracking-[0.32em] text-[#0f4cc8]">RANKING</p>
+            <h1 className="mt-4 text-[34px] font-semibold tracking-tight text-slate-900">{t('quantxAgent.leaderboard.title')}</h1>
+            <p className="mt-4 text-sm text-slate-500">{t('quantxAgent.leaderboard.subtitle')}</p>
+          </div>
+
+          <div className="pt-14 text-right">
+            <p className="text-sm text-slate-500">{t('quantxAgent.leaderboard.updatedAt')}</p>
+          </div>
         </div>
 
-        <div className="pt-14 text-right">
-          <p className="text-sm text-slate-500">{t('quantxAgent.leaderboard.updatedAt')}</p>
-        </div>
-      </div>
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm font-medium text-slate-500">{t('quantxAgent.leaderboard.filterLabel')}</span>
+            {tabs.map((tab) => (
+              <TabButton key={tab.key} active={activeTab === tab.key} onClick={() => setActiveTab(tab.key)}>
+                {tab.label}
+              </TabButton>
+            ))}
+          </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="text-sm font-medium text-slate-500">{t('quantxAgent.leaderboard.filterLabel')}</span>
-          {tabs.map((tab) => (
-            <TabButton key={tab.key} active={activeTab === tab.key} onClick={() => setActiveTab(tab.key)}>
-              {tab.label}
-            </TabButton>
-          ))}
-        </div>
-
-        <button type="button" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-slate-900">
-          {t('quantxAgent.leaderboard.sort')}
-          <ChevronDownIcon />
-        </button>
-      </div>
-
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-        <div className={`grid items-center gap-2 border-b border-slate-100 px-5 py-4 text-sm font-medium text-slate-500 ${gridClasses}`}>
-          {columns.map((column, index) => (
-            <div key={column} className={index === 0 ? 'text-left' : ''}>
-              {column}
-            </div>
-          ))}
-          <div />
+          <button type="button" className="inline-flex items-center gap-2 text-sm font-semibold text-slate-500 transition hover:text-slate-900">
+            {t('quantxAgent.leaderboard.sort')}
+            <ChevronDownIcon />
+          </button>
         </div>
 
-        <div className="divide-y divide-slate-100">
-          {activeRows.map((row) => (
-            <div key={`${activeTab}-${row.rank}`} className={`grid items-start gap-2 px-5 py-4 ${gridClasses}`}>
-              <div className="flex items-center justify-start">
-                <RankBadge rank={row.rank} />
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <div className={`grid items-center gap-2 border-b border-slate-100 px-5 py-4 text-sm font-medium text-slate-500 ${gridClasses}`}>
+            {columns.map((column, index) => (
+              <div key={column} className={index === 0 ? 'text-left' : ''}>
+                {column}
               </div>
+            ))}
+            <div />
+          </div>
 
-              <div className="flex min-w-0 items-start gap-2">
-                <StarIcon tone={row.tone} />
-                <div className="min-w-0">
-                  <h2 className="truncate text-[18px] font-semibold text-slate-900">{row.name}</h2>
-                  <p className="mt-1 text-sm leading-6 text-slate-500 line-clamp-1 pr-1">{row.desc}</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {row.tags.map((tag) => (
-                      <span key={tag} className="rounded-full bg-[#f3f5fb] px-3 py-1 text-xs font-medium text-slate-500">
-                        {tag}
-                      </span>
-                    ))}
+          <div className="divide-y divide-slate-100">
+            {activeRows.map((row) => (
+              <div key={`${activeTab}-${row.rank}`} className={`grid items-start gap-2 px-5 py-4 ${gridClasses}`}>
+                <div className="flex items-center justify-start">
+                  <RankBadge rank={row.rank} />
+                </div>
+
+                <div className="flex min-w-0 items-start gap-2">
+                  <StarIcon tone={row.tone} />
+                  <div className="min-w-0">
+                    <h2 className="truncate text-[18px] font-semibold text-slate-900">{row.name}</h2>
+                    <p className="mt-1 text-sm leading-6 text-slate-500 line-clamp-1 pr-1">{row.desc}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {row.tags.map((tag) => (
+                        <span key={tag} className="rounded-full bg-[#f3f5fb] px-3 py-1 text-xs font-medium text-slate-500">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="mt-2 text-xs text-slate-400">{row.meta}</p>
                   </div>
-                  <p className="mt-2 text-xs text-slate-400">{row.meta}</p>
+                </div>
+
+                {row.metrics.map((metric) => (
+                  <MetricCell key={`${row.rank}-${metric.label}`} metric={metric} />
+                ))}
+
+                <div className="flex justify-start xl:justify-end">
+                  <Button
+                    type="button"
+                    onClick={() => navigate('/quantx-agent/order')}
+                    className="h-11 rounded-xl bg-[#eef2fb] px-5 text-sm font-semibold 
+                    flex items-center justify-center
+                    text-[#0f4cc8] transition hover:bg-[#e3ebff]"
+                  >
+                    {t('quantxAgent.market.cta')}
+                    <span className="ml-1 inline-flex">
+                      <ArrowRightIcon />
+                    </span>
+                  </Button>
                 </div>
               </div>
-
-              {row.metrics.map((metric) => (
-                <MetricCell key={`${row.rank}-${metric.label}`} metric={metric} />
-              ))}
-
-              <div className="flex justify-start xl:justify-end">
-                <Button
-                  type="button"
-                  onClick={() => navigate('/quantx-agent/order')}
-                  className="h-11 rounded-xl bg-[#eef2fb] px-5 text-sm font-semibold 
-                  flex items-center justify-center
-                  text-[#0f4cc8] transition hover:bg-[#e3ebff]"
-                >
-                  {t('quantxAgent.market.cta')}
-                  <span className="ml-1 inline-flex">
-                    <ArrowRightIcon />
-                  </span>
-                </Button>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="rounded-2xl bg-[#eef3ff] px-5 py-4 text-sm text-slate-500 shadow-sm">
-        <div className="flex flex-wrap items-start gap-3">
-          <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-            <path d="m12 4-8.5 15h17L12 4Z" strokeLinejoin="round" />
-            <path d="M12 9v4.5" strokeLinecap="round" />
-            <circle cx="12" cy="16.5" r="1" fill="currentColor" stroke="none" />
-          </svg>
-          <p>{t('quantxAgent.leaderboard.note')}</p>
+        <div className="rounded-2xl bg-[#eef3ff] px-5 py-4 text-sm text-slate-500 shadow-sm">
+          <div className="flex flex-wrap items-start gap-3">
+            <svg viewBox="0 0 24 24" className="mt-0.5 h-5 w-5 shrink-0 text-slate-400" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="m12 4-8.5 15h17L12 4Z" strokeLinejoin="round" />
+              <path d="M12 9v4.5" strokeLinecap="round" />
+              <circle cx="12" cy="16.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
+            <p>{t('quantxAgent.leaderboard.note')}</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
