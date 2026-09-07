@@ -357,7 +357,7 @@ export default function LeaderboardTab() {
   const gridClasses = data.gridClasses[activeTab]
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-5 mx-auto w-full max-w-[1250px]">
       <div className="flex items-start justify-between gap-6">
         <div>
           <p className="text-xs font-bold tracking-[0.32em] text-[#0f4cc8]">RANKING</p>
